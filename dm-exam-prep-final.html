@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Divemaster Flashcards | Exam Prep</title>
+    <meta name="description" content="Master your Divemaster Exam with fun, interactive flashcards for Exam A and B.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bubbles" id="bubble-container"></div>
+
+    <main id="app-container">
+        <!-- Home Screen -->
+        <section id="home-screen" class="screen active">
+            <h1>🐙 Divemaster Flashcards</h1>
+            <p class="subtitle">Ready to become a Pro? Select your exam to start diving.</p>
+            <div class="btn-group">
+                <button class="button" onclick="startExam('A')">Final Exam A</button>
+                <button class="button" onclick="startExam('B')">Final Exam B</button>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <span id="question-counter">Question 1/120</span>
+                <div class="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <span id="current-score">Score: 0</span>
+            </div>
+
+            <div id="card-container" class="card">
+                <h2 class="question-text" id="question-text">Loading question...</h2>
+                <div class="options" id="options-container">
+                    <!-- Options will be injected here -->
+                </div>
+
+                <div id="feedback" class="feedback">
+                    <h3 id="feedback-title">Correct!</h3>
+                    <p id="feedback-text"></p>
+                    <p class="correct-answer-reveal" id="correct-answer-reveal"></p>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="button" id="submit-btn" onclick="submitAnswer()">Submit Answer</button>
+                <button class="button" id="next-btn" style="display: none;" onclick="nextQuestion()">Next Question ➔</button>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="result-screen" class="screen">
+            <h1>🌊 Dive Complete!</h1>
+            <p class="subtitle">You've reached the surface. Here's your logbook entry:</p>
+            <div id="final-score">0/120</div>
+            <p id="score-comment">Great job, Divemaster!</p>
+            <div class="btn-group" style="margin-top: 2rem;">
+                <button class="button" onclick="resetApp()">Start Again 🔄</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
