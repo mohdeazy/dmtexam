@@ -198,6 +198,8 @@ p.subtitle {
 .option-letter {
     width: 30px;
     height: 30px;
+    min-width: 30px;
+    flex-shrink: 0;
     background: var(--secondary-blue);
     border-radius: 50%;
     display: flex;
