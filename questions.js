@@ -2044,7 +2044,7 @@ const questions = {
             q: "Density Check: At a depth of 40 metres (5 Bar absolute), how much denser is the air you breathe compared to the surface?",
             options: ["2 times", "4 times", "5 times", "10 times"],
             answer: 2,
-            feedback: "Heavy Air! 🏋️‍♂️ At 5 Bar, the molecules are squeezed into 1/5th the space, making it 5x denser."
+            feedback: "Heavy Air! 🏋️‍♂️ At 195 Bar (wait, previous feedback was specific to the question), 5 Bar, the molecules are squeezed into 1/5th the space, making it 5x denser."
         },
         {
             q: "A 60-liter flexible container at the surface is taken to 10 metres (2 Bar absolute). What is its new volume?",
@@ -2106,5 +2106,570 @@ const questions = {
             answer: 2,
             feedback: "Overhead Noise! 🚁 It hits both ears 'instantly', so your brain just points UP."
         }
+    ],
+    Physiology: [
+        {
+            q: "According to Henry's Law, when a diver descends (pressure increases), what happens to the nitrogen in their body?",
+            options: [
+                "Nitrogen dissolves into the body's liquids and tissues.",
+                "Nitrogen is converted into oxygen by the liver.",
+                "Nitrogen is immediately exhaled as bubbles.",
+                "Nitrogen remains in the lungs and does not enter the blood."
+            ],
+            answer: 0,
+            feedback: "Soda Pop Physics! 🥤 Increased pressure forces gas into solution—just like a sealed bottle of coke."
+        },
+        {
+            q: "What is the primary mechanism that causes Decompression Sickness (DCS)?",
+            options: [
+                "Ascending too quickly, causing dissolved nitrogen to form bubbles in the blood or tissues.",
+                "Holding your breath during a rapid ascent.",
+                "Breathing contaminated air from a rusty tank.",
+                "Diving in water that is too cold without a wetsuit."
+            ],
+            answer: 0,
+            feedback: "The Fizz Factor! 🫧 If you come up too fast, the nitrogen 'pops' out of solution and forms bubbles, which is bad news for your body."
+        },
+        {
+            q: "Which of the following is a symptom often associated with a 'Type I' (Pain-Only) Decompression Sickness?",
+            options: [
+                "Joint and muscle pain (the 'bends').",
+                "Paralysis and loss of consciousness.",
+                "Shortness of breath and coughing.",
+                "Extreme euphoria and giggling."
+            ],
+            answer: 0,
+            feedback: "The Bends! 🏹 Joint pain is the classic indicator of Type I DCS."
+        },
+        {
+            q: "Why does being overweight (excess body fat) increase a diver's risk of Decompression Sickness?",
+            options: [
+                "Fat (adipose) tissue absorbs and holds onto nitrogen more than muscle tissue.",
+                "Fat makes a diver more buoyant.",
+                "Fat people breathe more air.",
+                "Fat tissue is denser than salt water."
+            ],
+            answer: 0,
+            feedback: "Nitrogen Sponge! 🧽 Fat is 'lipophilic', meaning it loves nitrogen and releases it very slowly compared to other tissues."
+        },
+        {
+            q: "How does dehydration contribute to the risk of DCS?",
+            options: [
+                "It reduces blood volume, which slows down the transport and elimination of nitrogen.",
+                "It makes the blood thinner and easier for bubbles to move.",
+                "It causes the lungs to shrink.",
+                "It has no effect on DCS risk."
+            ],
+            answer: 0,
+            feedback: "Stay Hydrated! 💧 Less blood volume means a less efficient 'delivery system' for off-gassing that nitrogen."
+        },
+        {
+            q: "True or False: Strenuous exercise immediately after a dive can increase the risk of DCS by accelerating circulation and bubble formation.",
+            options: ["True", "False"],
+            answer: 0,
+            feedback: "Chill Out! 🛀 After-dive workouts can stir up 'silent bubbles', making them problematic."
+        },
+        {
+            q: "What is the 'Golden Rule' of lung overexpansion injuries?",
+            options: [
+                "Always keep your eyes open.",
+                "NEVER hold your breath on scuba.",
+                "Always dive with a buddy.",
+                "Never dive deeper than 40 metres."
+            ],
+            answer: 1,
+            feedback: "Don't Hold It! 🛑 Your lungs are like balloons; if you hold your breath while ascending, they WILL pop."
+        },
+        {
+            q: "Which lung overexpansion injury is considered an immediate life-threatening emergency because it blocks blood flow to the brain?",
+            options: [
+                "Air Embolism (AGE)",
+                "Pneumothorax",
+                "Mediastinal Emphysema",
+                "Subcutaneous Emphysema"
+            ],
+            answer: 0,
+            feedback: "AGE Alert! 🧠 An Air Gas Embolism is like an underwater stroke—it needs 100% O2 and EMS immediately."
+        },
+        {
+            q: "A diver surfaces and complains of a 'fullness' in the neck and a change in their voice. This is likely:",
+            options: [
+                "Subcutaneous Emphysema",
+                "Pneumothorax",
+                "Nitrogen Narcosis",
+                "A common cold"
+            ],
+            answer: 0,
+            feedback: "Neck Air! 🗣️ Air from a lung rupture can travel up the tissues and settle under the skin at the base of the neck."
+        },
+        {
+            q: "If air from a lung rupture collects in the center of the chest, putting pressure on the heart, it is called:",
+            options: [
+                "Mediastinal Emphysema",
+                "Pneumothorax",
+                "DCS Type II",
+                "Carbon Monoxide Poisoning"
+            ],
+            answer: 0,
+            feedback: "Heart Squeeze! 💓 Mediastinal = Middle. It's air trapped in the middle of your chest."
+        },
+        {
+            q: "A collapsed lung caused by air trapped between the lung and the chest wall is called:",
+            options: [
+                "Pneumothorax",
+                "Subcutaneous Emphysema",
+                "Hypothermia",
+                "Carotid Sinus Reflex"
+            ],
+            answer: 0,
+            feedback: "Pop! 🫁 Pneumothorax basically 'unsticks' the lung from the chest wall, causing it to deflate."
+        },
+        {
+            q: "What is the most effective first aid for a diver suspected of having Decompression Illness (DCI)?",
+            options: [
+                "Administering 100% Oxygen.",
+                "Giving the diver plenty of water to drink.",
+                "Putting the diver in a warm bath.",
+                "Having the diver go back underwater to recompress."
+            ],
+            answer: 0,
+            feedback: "O2 is King! 💨 100% Oxygen creates a gradient that helps off-gas nitrogen and feeds oxygen-starved tissues."
+        },
+        {
+            q: "Sudden, momentary vertigo (dizziness) following a sharp ear pain while descending is likely caused by:",
+            options: [
+                "A ruptured eardrum allowing cold water to hit the inner ear's vestibular canals.",
+                "Nitrogen narcosis.",
+                "A tight mask.",
+                "A sudden change in visibility."
+            ],
+            answer: 0,
+            feedback: "The Vertigo Spin! 🌀 When the eardrum pops, cold water shocks your balance sensors (vestibular canals)."
+        },
+        {
+            q: "What is the 'Carotid Sinus Reflex' caused by?",
+            options: [
+                "A neck seal or wetsuit hood that is too tight.",
+                "Holding your breath while swimming fast.",
+                "Breathing too quickly through a snorkel.",
+                "Diving in water that is too salty."
+            ],
+            answer: 0,
+            feedback: "Neck Check! 👔 A tight seal tricks the brain into thinking blood pressure is too HIGH, causing the heart to slow down until you faint."
+        },
+        {
+            q: "Hypercapnia refers to an excess of ________ in the body.",
+            options: [
+                "Carbon Dioxide (CO2)",
+                "Oxygen (O2)",
+                "Nitrogen (N2)",
+                "Carbon Monoxide (CO)"
+            ],
+            answer: 0,
+            feedback: "CO2 Overload! 💨 This is usually caused by skip-breathing or overexertion."
+        },
+        {
+            q: "A symptom of severe Hypercapnia is:",
+            options: [
+                "A crushing headache.",
+                "Euphoria and laughter.",
+                "Extreme energy.",
+                "Numbness in the fingers."
+            ],
+            answer: 0,
+            feedback: "The Hammer! 🔨 A severe CO2 headache is unmistakable and very painful."
+        },
+        {
+            q: "How can a diver best avoid Hypercapnia?",
+            options: [
+                "By breathing slowly, deeply, and continuously.",
+                "By skip-breathing to save air.",
+                "By using a snorkel at depth.",
+                "By hyperventilating before the dive."
+            ],
+            answer: 0,
+            feedback: "Deep & Slow! 🌬️ Proper breathing is the key to managing CO2 levels."
+        },
+        {
+            q: "What is the danger of 'Shallow Water Blackout' associated with breath-hold diving?",
+            options: [
+                "A diver runs out of oxygen before the level of carbon dioxide triggers the urge to breathe.",
+                "A diver's lungs expand too much on the way up.",
+                "The diver gets too cold too quickly.",
+                "The diver forgets how to surface."
+            ],
+            answer: 0,
+            feedback: "Silent Danger! 🔇 Excessive hyperventilation lowers CO2 too much, so you faint without warning."
+        },
+        {
+            q: "The 'urge to breathe' is primarily triggered by:",
+            options: [
+                "High levels of Carbon Dioxide (CO2).",
+                "Low levels of Oxygen (O2).",
+                "High levels of Nitrogen (N2).",
+                "The depth of the water."
+            ],
+            answer: 0,
+            feedback: "CO2 Alarm! 🚨 Your body doesn't actually 'know' you lack oxygen; it just knows you have too much CO2."
+        },
+        {
+            q: "What is 'Dead Air Space'?",
+            options: [
+                "Air in the snorkel or regulator that is rebreathed and doesn't participate in gas exchange.",
+                "The air at the very bottom of a tank.",
+                "The air inside a diver's BCD.",
+                "A bubble in the bloodstream."
+            ],
+            answer: 0,
+            feedback: "Stale Air! 🌬️ Snorkels and regs add 'extra' space that traps old air. Deep breaths clear it out!"
+        },
+        {
+            q: "Why is a chest cold or smoking a risk factor for lung overexpansion injuries?",
+            options: [
+                "They increase mucus or damage surfactant, which can trap air in small pockets of the lung.",
+                "They make the diver breathe more air.",
+                "They make the blood thicker.",
+                "They cause the diver to sink."
+            ],
+            answer: 0,
+            feedback: "Sticky Lungs! 🕸️ Damaged lungs don't deflate evenly, potentially trapping air that expands on ascent."
+        },
+        {
+            q: "True or False: If a near-drowning patient seems fully recovered, they should still seek medical attention because of the risk of 'secondary drowning'.",
+            options: ["True", "False"],
+            answer: 0,
+            feedback: "Don't Risk It! 🚑 Fluid in the lungs can cause chemical reactions and swelling hours later."
+        },
+        {
+            q: "As a diver descends, why does gas narcosis (nitrogen narcosis) occur?",
+            options: [
+                "The increased partial pressure of nitrogen affects neural transmissions.",
+                "The diver is breathing too much oxygen.",
+                "The water is getting darker.",
+                "The diver is thinking too much about sharks."
+            ],
+            answer: 0,
+            feedback: "The Martini Effect! 🍸 High-pressure nitrogen acts as a mild anesthetic, making you feel tipsy."
+        },
+        {
+            q: "What is the most serious sign of Central Nervous System (CNS) Oxygen Toxicity?",
+            options: [
+                "Convulsions (seizures).",
+                "Nausea.",
+                "Dizziness.",
+                "Tingling in the lips."
+            ],
+            answer: 0,
+            feedback: "VENTID Mask! 🎭 Convulsions are the most dramatic and dangerous sign, especially underwater."
+        },
+        {
+            q: "A diver on a hot boat deck in a full wetsuit becomes weak, has cool and clammy skin, and feels nauseated. They are likely suffering from:",
+            options: [
+                "Heat Exhaustion",
+                "Heat Stroke",
+                "Hypothermia",
+                "Nitrogen Narcosis"
+            ],
+            answer: 0,
+            feedback: "Cool Off! 🧥 Heat exhaustion is the body's warning sign before the much more dangerous Heat Stroke."
+        },
+        {
+            q: "In contrast to Heat Exhaustion, a patient with 'Heat Stroke' will usually have:",
+            options: [
+                "Hot, dry skin and stopped sweating.",
+                "Cool, clammy skin and heavy sweating.",
+                "A strong desire to dive.",
+                "Normal body temperature."
+            ],
+            answer: 0,
+            feedback: "Emergency! 🔥 Heat stroke is a medical crisis where the body's cooling system completely fails."
+        },
+        {
+            q: "Hypothermia sets in when the body's core temperature drops below:",
+            options: [
+                "35°C (95°F)",
+                "37°C (98.6°F)",
+                "30°C (86°F)",
+                "25°C (77°F)"
+            ],
+            answer: 0,
+            feedback: "Deep Chill! 🧊 Even a small drop in core temp starts affecting your brain and muscles."
+        },
+        {
+            q: "Which part of the respiratory system is responsible for the actual exchange of gas (O2 and CO2) with the blood?",
+            options: [
+                "Alveoli",
+                "Bronchi",
+                "Trachea",
+                "Larynx"
+            ],
+            answer: 0,
+            feedback: "Tiny Bubbles! 🎈 The alveoli are the millions of tiny air sacs where the magic happens."
+        },
+        {
+            q: "What is the role of 'Hemoglobin' in the blood?",
+            options: [
+                "It carries the majority of oxygen from the lungs to the tissues.",
+                "It is the liquid part of the blood.",
+                "It fights off infections.",
+                "It causes the blood to clot."
+            ],
+            answer: 0,
+            feedback: "Oxygen Taxi! 🚕 Hemoglobin in red blood cells is the primary transport for O2."
+        },
+        {
+            q: "True or False: Carbon Monoxide (CO) poisoning is dangerous because CO binds to hemoglobin much more strongly than oxygen does.",
+            options: ["True", "False"],
+            answer: 0,
+            feedback: "The Hijacker! 🏴‍☠️ CO 'steals' the seats in the hemoglobin taxi, preventing oxygen from getting a ride."
+        }
+    ],
+    RDP: [
+        {
+            q: "Theoretical tissue compartments in decompression models are used to measure:",
+            options: [
+                "The exact volume of gas in the lungs.",
+                "How fast or slow different parts of the body absorb and release nitrogen.",
+                "The total amount of oxygen converted into energy.",
+                "The density of the diver's bones."
+            ],
+            answer: 1,
+            feedback: "Tissue Logic! 🧠 These aren't 'real' tissues, but math models representing how different parts of you (like blood vs fat) handle gas."
+        },
+        {
+            q: "A compartment's 'Halftime' is defined as:",
+            options: [
+                "The time it takes to completely off-gas all nitrogen.",
+                "The time it takes for a compartment to go halfway from its current nitrogen pressure to fully saturated at a new depth.",
+                "Half the time of the total dive duration.",
+                "The time required for an 8-minute safety stop."
+            ],
+            answer: 1,
+            feedback: "Halfway There! ⏱️ It's a logarithmic scale—after 1 halftime you're 50% full, after 2 you're 75%, and so on."
+        },
+        {
+            q: "Under the RDP model, a tissue compartment is considered to be 'completely full' (saturated) after how many halftimes?",
+            options: ["3", "6", "10", "14"],
+            answer: 1,
+            feedback: "Rule of 6! 📈 After 6 halftimes, a tissue is 98.4% full, which the model treats as 100% saturation."
+        },
+        {
+            q: "What does an 'M-Value' represent in decompression theory?",
+            options: [
+                "Minimum surface interval.",
+                "The maximum nitrogen pressure allowed in a theoretical tissue before Decompression Sickness (DCS) occurs.",
+                "The metric depth of the dive.",
+                "The maximum rate of descent."
+            ],
+            answer: 1,
+            feedback: "The Limit! 🛑 M-Values are the 'ceiling' for each tissue—cross them, and you're in the bubble zone."
+        },
+        {
+            q: "Compared to the US Navy tables, the RDP was designed with:",
+            options: [
+                "Fewer tissue compartments for simplicity.",
+                "More tissue compartments and a faster gas washout to better model recreational diving.",
+                "A longer surface interval credit of 120 minutes.",
+                "Slower gas washout for safety."
+            ],
+            answer: 1,
+            feedback: "Rec-Focused! 🏊‍♂️ RDP has 14 compartments and a 60-min washout, making it perfect for multiple recreational dives."
+        },
+        {
+            q: "What is the absolute maximum depth for recreational diving according to PADI standards?",
+            options: ["18 metres", "30 metres", "40 metres", "42 metres"],
+            answer: 2,
+            feedback: "The Hard Limit! 🛑 40m is the recreational ceiling. Anything deeper is technical territory."
+        },
+        {
+            q: "A dive to 42 metres is allowed on the RDP only for:",
+            options: [
+                "Deep Specialty training.",
+                "Advanced Open Water divers.",
+                "Emergency purposes only.",
+                "Checking the accuracy of a dive computer."
+            ],
+            answer: 2,
+            feedback: "Emergency Only! ⚠️ The 42m column exists strictly for emergency calculation, not for planning."
+        },
+        {
+            q: "If you are planning a dive in cold or strenuous conditions, you should plan the dive as if it were:",
+            options: [
+                "10 minutes shorter.",
+                "4 metres deeper than actual.",
+                "10 metres shallower than actual.",
+                "At a different altitude."
+            ],
+            answer: 1,
+            feedback: "Cold Padding! 🧊 Cold water restricts circulation, slowing nitrogen elimination, so we plan more conservatively."
+        },
+        {
+            q: "What is the maximum ascent rate for any dive using the RDP?",
+            options: ["30 metres per minute", "18 metres per minute", "10 metres per minute", "6 metres per minute"],
+            answer: 1,
+            feedback: "Slow is Smooth! 🏎️ 18m per minute is the absolute speed limit—it allows gas to expand safely."
+        },
+        {
+            q: "A safety stop for 3 minutes at 5 metres is mandatory if:",
+            options: [
+                "You dive to 30 metres or deeper.",
+                "You surface within 3 pressure groups of the No Decompression Limit (NDL).",
+                "You hit any 'Black Box' limit on the RDP.",
+                "All of the above."
+            ],
+            answer: 3,
+            feedback: "Triple Threat! 🛡️ These three conditions make a safety stop a Requirement, not just a recommendation."
+        },
+        {
+            q: "If you accidentally exceed your NDL by 5 minutes or less, the PADI protocol is to:",
+            options: [
+                "Breathe 100% oxygen and dive again immediately.",
+                "Perform a mandatory 8-minute stop at 5 metres and stay out of the water for 6 hours.",
+                "Continue the dive at a shallower depth.",
+                "Surface immediately at 18m/min."
+            ],
+            answer: 1,
+            feedback: "Short Overstuff! ⏱️ 8 mins at 5m and a 6-hour break gives your body time to shed the extra nitrogen."
+        },
+        {
+            q: "If you exceed your NDL by more than 5 minutes, you must perform a 5-metre stop for at least ____ minutes and stay out for ____ hours.",
+            options: ["8 / 12", "15 / 24", "10 / 6", "20 / 48"],
+            answer: 1,
+            feedback: "Big Overstuff! 🚨 If you blow past the limit, you need a 15-minute 'hang' and a full day on land."
+        },
+        {
+            q: "The 'W, X, Y, Z Rule' states that if you plan 3 or more dives in a day and your ending group is W or X, the minimum surface interval is:",
+            options: ["30 minutes", "1 hour", "3 hours", "6 hours"],
+            answer: 1,
+            feedback: "The WX Rule! ⏳ Those letters mean you have a heavy nitrogen load—give it at least an hour."
+        },
+        {
+            q: "If your ending pressure group after Dive 2 is Y or Z, the minimum surface interval before Dive 3 must be:",
+            options: ["1 hour", "2 hours", "3 hours", "4 hours"],
+            answer: 2,
+            feedback: "The YZ Rule! ⏳ 3 hours is required to wash out enough gas for a safe 3rd dive."
+        },
+        {
+            q: "Which of the following is the minimum wait time before flying after multiple dives?",
+            options: ["12 hours", "18 hours", "24 hours", "36 hours"],
+            answer: 1,
+            feedback: "Fly Safe! ✈️ 18 hours is the PADI standard for multiple/repetitive dives."
+        },
+        {
+            q: "Diving at altitudes above 300 metres requires special training because:",
+            options: [
+                "Lower atmospheric pressure affects the nitrogen gradient.",
+                "The water is always colder at altitude.",
+                "Tanks hold less air at height.",
+                "Fish are smaller at altitude."
+            ],
+            answer: 0,
+            feedback: "Thin Air! 🏔️ Less pressure on the surface means nitrogen wants to escape faster—potentially as bubbles."
+        },
+        {
+            q: "Table 1 (Metric): What is the No Decompression Limit (NDL) for a dive to 18 metres?",
+            options: ["30 mins", "45 mins", "56 mins", "60 mins"],
+            answer: 2,
+            feedback: "Math Check! 📊 56 minutes is the magic number for an 18m dive."
+        },
+        {
+            q: "Table 1 (Metric): After a dive to 16 metres for 30 minutes, what is your Pressure Group?",
+            options: ["G", "H", "J", "K"],
+            answer: 1,
+            feedback: "Chart Logic! 📉 30 mins at 16m lands you right in Group H."
+        },
+        {
+            q: "Table 2 (Metric): You are in Group Q. After a 40-minute surface interval, what is your new Pressure Group?",
+            options: ["G", "H", "I", "J"],
+            answer: 3,
+            feedback: "Washout! 🧼 40 minutes on the surface drops you from Q down to J."
+        },
+        {
+            q: "Table 3 (Metric): You start a repetitive dive to 14 metres in Group G. What is your Residual Nitrogen Time (RNT)?",
+            options: ["29 mins", "35 mins", "44 mins", "50 mins"],
+            answer: 3,
+            feedback: "RNT Hunt! 🔎 $14m + Group G = 50 minutes of nitrogen 'debt' already in your tissues."
+        },
+        {
+            q: "Dive 1: 20 metres for 27 minutes. SI: 45 minutes. What is your Group for Dive 2?",
+            options: ["F", "G", "H", "I"],
+            answer: 1,
+            feedback: "Repetitive Math! 🧮 20m/27m (Group K) -> 45 min SI -> Group G."
+        },
+        {
+            q: "You are in Group G and plan a second dive to 16 metres for 20 minutes (ABT). What is your Total Bottom Time (TBT)?",
+            options: ["34 mins", "44 mins", "54 mins", "64 mins"],
+            answer: 2,
+            feedback: "Sum it up! ➕ RNT (34) + ABT (20) = 54 minutes of Total Bottom Time."
+        },
+        {
+            q: "For a repetitive dive to 16 metres with a TBT of 54 minutes, what is the final Pressure Group?",
+            options: ["T", "U", "V", "W"],
+            answer: 1,
+            feedback: "Final Result! 🏁 54 mins at 16m earns you a solid Group U."
+        },
+        {
+            q: "Table 3 (Metric): What is the Adjusted No Decompression Limit (ANDL) for a repetitive dive to 18 metres in Group L?",
+            options: ["10 mins", "15 mins", "20 mins", "25 mins"],
+            answer: 2,
+            feedback: "Time Left! ⏳ In Group L, you only have 20 minutes left on your 18m repetitive dive."
+        },
+        {
+            q: "Table 1 (Metric): If you surface from a single dive with a Pressure Group of 'Z', what depth/time did you likely dive?",
+            options: [
+                "18m for 56 mins",
+                "20m for 45 mins",
+                "30m for 20 mins",
+                "All of the above."
+            ],
+            answer: 3,
+            feedback: "Maxed Out! 🚀 All those combinations are the exact NDLs for their respective depths."
+        },
+        {
+            q: "Table 3 (Metric): What is the RNT for a dive to 25 metres if you are in Group C?",
+            options: ["3 mins", "5 mins", "7 mins", "10 mins"],
+            answer: 2,
+            feedback: "Quick Check! 🔎 $25m + Group C = 7 minutes of RNT."
+        },
+        {
+            q: "Theoretical tissues with the shortest halftimes (fastest gas absorption) are usually:",
+            options: ["Fat and Bones", "Cartilage", "Blood and Muscle", "Joints"],
+            answer: 2,
+            feedback: "Fast Flow! 🏎️ Areas with high blood flow (like muscles) saturate and desaturate much faster than fat."
+        },
+        {
+            q: "Dive computers often give longer NDLs than tables because:",
+            options: [
+                "They use different physical laws.",
+                "They calculate the profile second-by-second and avoid conservative rounding.",
+                "They are less safe.",
+                "They ignore nitrogen accumulation."
+            ],
+            answer: 1,
+            feedback: "Real-Time Precision! ⏱️ Tables round everything to the 'worst case', while computers track your actual path."
+        },
+        {
+            q: "If you surface without completing a required mandatory decompression stop, the first aid is to:",
+            options: [
+                "Drink water and dive deeper.",
+                "Breathe 100% oxygen and avoid diving for 24 hours.",
+                "Call a doctor in the morning.",
+                "Do 10 pushups."
+            ],
+            answer: 1,
+            feedback: "Emergency O2! 💨 Breath 100% Oxygen to help clear those bubbles and STAY OUT for a full day."
+        },
+        {
+            q: "Who was the primary developer of the PADI Recreational Dive Planner (RDP)?",
+            options: [
+                "Jacques Cousteau",
+                "Dr. Raymond Rogers",
+                "The US Navy Diving Team",
+                "Albert Buhlmann"
+            ],
+            answer: 1,
+            feedback: "Legend! 🎩 Dr. Raymond Rogers (a PADI DM!) updated the old Navy models for recreational use."
+        }
     ]
 };
+
