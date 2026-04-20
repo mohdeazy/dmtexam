@@ -1742,5 +1742,187 @@ const questions = {
             answer: 2,
             feedback: "Allowance! 🎮 79 minutes left for that 12m leg."
         }
+    ],
+    Equipment: [
+        {
+            q: "What is the primary difference in base shape between a steel and an aluminum cylinder?",
+            options: ["Steel is flat, Aluminum is round.", "Steel is round, Aluminum is flat/square.", "Both are flat.", "Both are round."],
+            answer: 1,
+            feedback: "Base Fact! 🏗️ Aluminum needs a flat base to stand, while steel is traditionally round-bottomed and uses a boot."
+        },
+        {
+            q: "Which type of cylinder corrosion produces a 'white powder' (aluminum oxide) that is generally easier to clean?",
+            options: ["Steel", "Aluminum", "Carbon Fiber", "Titanium"],
+            answer: 1,
+            feedback: "Powder Power! ⚪ Aluminum oxide is that white dust you see; steel gives you the much tougher red rust."
+        },
+        {
+            q: "As an aluminum cylinder drops in pressure (gets emptier), what happens to its buoyancy?",
+            options: ["It becomes less buoyant.", "It becomes more buoyant (floatier).", "Buoyancy remains unchanged.", "It sinks faster."],
+            answer: 1,
+            feedback: "The Floaty Finish! 🎈 Aluminum tanks get noticeably lighter and floatier as you breathe them down—plan your weights for this!"
+        },
+        {
+            q: "Regarding cylinder markings, what does the acronym 'P.C.D.' stand for in a pre-fill check?",
+            options: ["Pressure, Capacity, Date", "Piston, Cylinder, Diaphragm", "Point, Click, Done", "Partial, Constant, Density"],
+            answer: 0,
+            feedback: "Check your Stamps! 🔨 Pressure rating, internal Capacity, and the Hydro Date are the big three."
+        },
+        {
+            q: "According to international practice, a Visual Inspection (VIP) of a scuba cylinder is required:",
+            options: ["Every 5 years", "Every 2 years", "Once a year", "Only when the tank looks dirty"],
+            answer: 2,
+            feedback: "Yearly Eye-Ball! 👁️ A VIP must be done annually to catch internal corrosion before it's too late."
+        },
+        {
+            q: "The primary goal of a Visual Inspection (VIP) is to check for:",
+            options: ["External paint scratches", "Internal corrosion and thread damage", "The color of the O-ring", "The flexibility of the tank boot"],
+            answer: 1,
+            feedback: "Inside Story! 🕵️‍♂️ It's what's on the inside that counts—rust or thread cracks can be deadly."
+        },
+        {
+            q: "What is the function of the regulator's first stage?",
+            options: ["It reduces high tank pressure to intermediate pressure.", "It delivers air at ambient pressure to your mouth.", "It shows you the remaining air in the tank.", "It provides bubbles for better visibility."],
+            answer: 0,
+            feedback: "The Reducer! 📉 The 1st stage takes that 200+ bar and steps it down to a manageable 9-12 bar."
+        },
+        {
+            q: "What is the typical 'Intermediate Pressure' delivered by a first stage to the hoses?",
+            options: ["1-2 Bar", "9-12 Bar", "50-60 Bar", "200 Bar"],
+            answer: 1,
+            feedback: "Middle Ground! ↔️ 9 to 12 bar above ambient is the standard range for your hoses."
+        },
+        {
+            q: "A 'Balanced' regulator design ensures that:",
+            options: ["The regulator weighs the same on both sides.", "Breathing is consistent regardless of tank pressure or depth.", "The diver doesn't tip over underwater.", "Air only flows when you're upside down."],
+            answer: 1,
+            feedback: "Consistent Comfort! ⚖️ Balanced regs breathe just as easily at 10 bar as they do at 200 bar."
+        },
+        {
+            q: "What is the purpose of an 'Environmental Seal' on a first stage?",
+            options: ["To prevent fish from entering the regulator.", "To stop the regulator from freezing in very cold water.", "To make the regulator look more professional.", "To keep the tank from rusting."],
+            answer: 1,
+            feedback: "Anti-Freeze! ❄️ By sealing the internals with oil or silicone, we keep freezing water from jamming the valves."
+        },
+        {
+            q: "In an 'Open Circuit' breathing system (standard recreational scuba):",
+            options: ["100% of the gas is recycled.", "Exhaled bubbles are released into the water.", "CO2 is removed chemically.", "No bubbles are produced."],
+            answer: 1,
+            feedback: "Bubble Maker! 🫧 Open circuit means you breathe it once and let it go—0% recycled."
+        },
+        {
+            q: "A 'Closed Circuit Rebreather' (CCR) is characterized by:",
+            options: ["100% recycling of gas and zero bubbles.", "Needing a very large tank.", "Being much cheaper than open circuit.", "Only working in shallow water."],
+            answer: 0,
+            feedback: "The Stealth Rig! 🥷 CCR recycles everything and produces no bubbles, making you the ultimate underwater observer."
+        },
+        {
+            q: "In a rebreather, what is the role of the 'Scrubber'?",
+            options: ["To clean the outside of the unit.", "To chemically remove Carbon Dioxide (CO2) from the breathing loop.", "To add oxygen to the mix.", "To cool down the breathing gas."],
+            answer: 1,
+            feedback: "CO2 Filter! 🧪 The scrubber uses chemical granules to eat the CO2 you exhale."
+        },
+        {
+            q: "Which depth gauge operates based on Boyle's Law and uses a simple clear tube?",
+            options: ["Digital Transducer", "Capillary Gauge", "Bourdon Tube", "Diaphragm Gauge"],
+            answer: 1,
+            feedback: "Old School! 📏 Capillary gauges are simple and great for altitude, but hard to read deep."
+        },
+        {
+            q: "A 'Bourdon Tube' gauge works by utilizing:",
+            options: ["A battery-powered sensor.", "A spiral tube that straightens under pressure.", "A chemical reaction.", "A glass block that magnifies the needle."],
+            answer: 1,
+            feedback: "Curve to Straight! ➰ Pressure forces the curved tube to straighten, moving the needle."
+        },
+        {
+            q: "Which gauge technology is a standard in modern dive computers and offers the highest accuracy?",
+            options: ["Capillary", "Oil-filled Bourdon", "Digital Transducer", "Diaphragm"],
+            answer: 2,
+            feedback: "The Pro Choice! 💻 Transducers convert pressure to electricity for pinpoint accuracy."
+        },
+        {
+            q: "What is the 'Golden Rule' of Enriched Air (Nitrox)?",
+            options: ["Always dive as deep as possible.", "The Divemaster must analyze everyone's tank.", "Every diver must personally analyze their own cylinder's oxygen content.", "Only dive Nitrox on Tuesdays."],
+            answer: 2,
+            feedback: "Personal Duty! 🧪 You dive it, YOU analyze it. No exceptions!"
+        },
+        {
+            q: "What is a major risk of a 'Bourdon Tube' gauge compared to an oil-filled one?",
+            options: ["It's too heavy.", "It can clog because water enters the tube directly.", "The glass always breaks.", "It doesn't work in salt water."],
+            answer: 1,
+            feedback: "Clog Alert! ⚠️ Because water goes inside the tube, debris can jam the mechanism."
+        },
+        {
+            q: "A regulator that free-flows when it malfunctions is using a ________ design.",
+            options: ["Upstream", "Downstream / Fail-safe", "Manual override", "Closed circuit"],
+            answer: 1,
+            feedback: "Safe Fail! 🌬️ If the high-pressure seat fails, the valve is pushed OPEN, giving you air rather than cutting it off."
+        },
+        {
+            q: "The 'Hydrostatic Test' measures a cylinder's ________ under pressure.",
+            options: ["Color", "Weight", "Structural integrity and expansion", "Internal humidity"],
+            answer: 2,
+            feedback: "The Big Squeeze! 🥤 Hydro tests confirm the tank can handle the pressure without permanently stretching."
+        },
+        {
+            q: "What type of regulator valve allows you to screw the first stage directly into the cylinder valve?",
+            options: ["Yoke", "DIN", "K-valve", "J-valve"],
+            answer: 1,
+            feedback: "Screw It! 🔩 DIN (Deutsche Industrie Norm) is the threaded, high-pressure connection."
+        },
+        {
+            q: "True or False. A near-drowning patient who seems recovered should still seek medical care because water in the lungs can cause issues hours later.",
+            options: ["True", "False"],
+            answer: 0,
+            feedback: "Stay Vigilant! 🚑 Secondary drowning is a real and dangerous threat."
+        },
+        {
+            q: "Environmental seals on regulators are usually packed with:",
+            options: ["Fresh water", "Sand", "Silicone grease or oil", "Compressed air"],
+            answer: 2,
+            feedback: "Liquid Shield! 🧴 Oil doesn't freeze and perfectly transmits outside pressure to the internals."
+        },
+        {
+            q: "A 'Diaphragm' depth gauge works by:",
+            options: ["Using air bubbles in a tube.", "Using a flexible plate connected to levers and gears.", "Analyzing light refraction.", "Measuring water conductivity."],
+            answer: 1,
+            feedback: "Mechanical Flex! ⚙️ The water pushes on a diaphragm, which moves the needle via a series of gears."
+        },
+        {
+            q: "What does the 'Maximum Working Pressure' on a tank marking indicate?",
+            options: ["The pressure at which the tank explodes.", "The maximum pressure the tank is rated to be filled to.", "The pressure at 40 meters depth.", "The pressure in the diver's lungs."],
+            answer: 1,
+            feedback: "Know the Limit! 🛑 Never overfill—respect the stamped working pressure."
+        },
+        {
+            q: "The second stage of a regulator delivers air to the diver at:",
+            options: ["Intermediate pressure", "Ambient (Absolute) pressure", "High pressure", "Zero pressure"],
+            answer: 1,
+            feedback: "Just Right! 👌 The second stage gives you air at exactly the pressure of the water around you."
+        },
+        {
+            q: "Why should you analyze Nitrox before every dive?",
+            options: ["To confirm the O2 percentage to set your computer correctly.", "To check for carbon monoxide.", "To see if the air smells good.", "To know how much nitrogen is in the tank."],
+            answer: 0,
+            feedback: "Precision! 🎯 Your computer needs the exact O2 mix to keep your decompression profile safe."
+        },
+        {
+            q: "True or False. An unbalanced regulator becomes harder to breathe as tank pressure drops.",
+            options: ["True", "False"],
+            answer: 0,
+            feedback: "Deep Breaths! 🌬️ As the 'oomph' from the tank drops, an unbalanced reg can't help as much, making pulls harder."
+        },
+        {
+            q: "What is the recommended service interval for most modern regulators?",
+            options: ["Every month", "Once a year or according to manufacturer specs", "Only when they stop working", "Once every 10 years"],
+            answer: 1,
+            feedback: "Service is Life! 🛠️ Don't skip the annual check-up to keep your lifeline in peak condition."
+        },
+        {
+            q: "A 'Yoke' valve regulator is characterized by:",
+            options: ["Being screwed into the tank.", "Being clamped onto the tank valve.", "Having 10 stages.", "Only working with Nitrox."],
+            answer: 1,
+            feedback: "The Clamp! 🗜️ Yoke is the classic recreational bridge-style connection."
+        }
     ]
 };
