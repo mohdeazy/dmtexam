@@ -1,3 +1,9 @@
 *.pdf
 agent/
 .temp/
+PADI RDP Manual/
+media/
+*.png
+*.jpg
+*.jpeg
+*.gif

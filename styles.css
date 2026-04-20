@@ -63,6 +63,7 @@ body {
     padding: 2rem;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     transition: all 0.5s ease;
+    transform: translateY(-30px); /* Nudge up a bit */
 }
 
 /* Splash Screen */
@@ -251,5 +252,30 @@ p.subtitle {
     font-size: 4rem;
     font-weight: 800;
     margin: 1.5rem 0;
+    color: var(--teal);
+}
+
+.footer-credits {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.footer-credits a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-credits a:hover {
+    text-decoration: underline;
+}
+
+.footer-credits .reminder {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
     color: var(--teal);
 }
