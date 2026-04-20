@@ -1924,5 +1924,187 @@ const questions = {
             answer: 1,
             feedback: "The Clamp! 🗜️ Yoke is the classic recreational bridge-style connection."
         }
+    ],
+    Physics: [
+        {
+            q: "How much faster does water conduct heat away from your body compared to air?",
+            options: ["4 times faster", "10 times faster", "20 times faster", "Same speed"],
+            answer: 2,
+            feedback: "Flash Freeze! 🥶 Water is a great conductor, stealing your heat 20x faster than air. Suit up!"
+        },
+        {
+            q: "Sound travels approximately ____ times faster in water than in air.",
+            options: ["2 times", "4 times", "10 times", "20 times"],
+            answer: 1,
+            feedback: "Speedy Waves! 🔊 Sound hits both ears so fast (4x speed) that your brain can't tell where it's coming from."
+        },
+        {
+            q: "Due to refraction, objects underwater appear ____ larger and ____ closer.",
+            options: ["25% / 33%", "33% / 25%", "50% / 50%", "10% / 90%"],
+            answer: 1,
+            feedback: "The Big Reveal! 🔍 Objects look 33% bigger and 25% closer—that 'huge' shark might be just a friendly reef shark!"
+        },
+        {
+            q: "Which light color is absorbed first as you descend into deeper water?",
+            options: ["Blue", "Green", "Yellow", "Red"],
+            answer: 3,
+            feedback: "Bleeding Colors! 🩸 Red is the first to go, usually disappearing within the first 5 metres."
+        },
+        {
+            q: "Wait! Why do objects sometimes look further away in murky or turbid water?",
+            options: ["Refraction", "Absorption", "Visual Reversal", "Diffusion"],
+            answer: 2,
+            feedback: "Optical Trick! 🌫️ Visual Reversal happens when limited visibility tricks your brain into thinking something is far away."
+        },
+        {
+            q: "In sea water, how many metres of depth are required to increase the pressure by 1 Bar (Gauge)?",
+            options: ["10 metres", "10.3 metres", "33 metres", "1 metre"],
+            answer: 0,
+            feedback: "Ocean Math! 🌊 10 metres of salt water equals 1 atmosphere/bar of pressure."
+        },
+        {
+            q: "Calculations: What is the Absolute (Ambient) pressure at a depth of 20 metres in the ocean?",
+            options: ["2 Bar", "3 Bar", "4 Bar", "1 Bar"],
+            answer: 1,
+            feedback: "Pressure Check! ⚓ 2 Bar from the water + 1 Bar from the surface atmosphere = 3 Bar Absolute."
+        },
+        {
+            q: "How much does one liter of fresh water weigh?",
+            options: ["0.97 kg", "1.0 kg", "1.03 kg", "1.1 kg"],
+            answer: 1,
+            feedback: "Fresh & Light! 💧 1.0 kg per liter is the standard for fresh water."
+        },
+        {
+            q: "How much does one liter of sea water weigh?",
+            options: ["0.97 kg", "1.0 kg", "1.03 kg", "1.1 kg"],
+            answer: 2,
+            feedback: "Salty & Dense! 🧂 Extra minerals and salt make sea water 1.03 kg per liter."
+        },
+        {
+            q: "To get a pressure increase of 1 Bar in a fresh water lake, how deep must you go?",
+            options: ["10 metres", "10.3 metres", "14.7 metres", "9.8 metres"],
+            answer: 1,
+            feedback: "Lake Life! 🏞️ Because fresh water is less dense, you need 10.3 metres for that 1 bar jump."
+        },
+        {
+            q: "Dalton's Law states that the ____ pressure of a gas mixture is the sum of the ____ pressures of each gas.",
+            options: ["Total / Partial", "Partial / Total", "Combined / Ambient", "Absolute / Gauge"],
+            answer: 0,
+            feedback: "Gas Mix! 🧪 Total = Sum of the parts. It's that simple."
+        },
+        {
+            q: "Calculation: If a diver breathes air (21% O2) at 30 metres (4 Bar absolute), what is the partial pressure of oxygen (PO2)?",
+            options: ["0.21 bar", "0.42 bar", "0.63 bar", "0.84 bar"],
+            answer: 3,
+            feedback: "Dalton's Math! 🧮 4 Bar * 0.21 = 0.84 bar PO2."
+        },
+        {
+            q: "What is the generally accepted maximum safe partial pressure limit for Oxygen (PO2) in recreational diving?",
+            options: ["1.0 bar", "1.2 bar", "1.4 bar", "1.6 bar"],
+            answer: 2,
+            feedback: "The Red Line! 🛑 1.4 bar is the limit to avoid CNS Oxygen Toxicity."
+        },
+        {
+            q: "Henry's Law (The Soda Bottle Effect) explains how gas ____ into a liquid under pressure.",
+            options: ["Expands", "Dissolves", "Contracts", "Freezes"],
+            answer: 1,
+            feedback: "Soda Pop! 🥤 Higher pressure forces gas into solution. Coming up too fast is like popping the cap!"
+        },
+        {
+            q: "If a diver ascends too quickly, the nitrogen in their tissues can come out of solution too fast, causing ____.",
+            options: ["Oxygen Toxicity", "Nitrogen Narcosis", "Decompression Sickness (DCS)", "Lung Overexpansion"],
+            answer: 2,
+            feedback: "The Bends! 🚑 Supersaturation causes bubbles to form in the blood/tissues."
+        },
+        {
+            q: "Charles' Law explains that if the volume is kept constant, an increase in temperature will result in ____ in pressure.",
+            options: ["An increase", "A decrease", "No change", "A stabilization"],
+            answer: 0,
+            feedback: "Heat it up! 🔥 Hot molecules move faster, hitting the tank walls harder and raising pressure."
+        },
+        {
+            q: "Formula: A 1 degree Celsius (C) change in temperature typically results in a ________ Bar change in tank pressure.",
+            options: ["0.2 bar", "0.6 bar", "1.0 bar", "1.5 bar"],
+            answer: 1,
+            feedback: "Thermal Shift! 🌡️ 0.6 bar per 1 degree C. It adds up fast in cold water!"
+        },
+        {
+            q: "Calculation: A tank filled to 220 Bar at 28°C is used in 3°C water. What is the new pressure? (Drop of 25°C)",
+            options: ["200 Bar", "205 Bar", "210 Bar", "195 Bar"],
+            answer: 1,
+            feedback: "Tough Math! 🧮 25°C drop * 0.6 = 15 Bar drop. 220 - 15 = 205 Bar."
+        },
+        {
+            q: "Boyle's Law states that if temperature remains constant, the volume of a gas is ________ proportional to the pressure.",
+            options: ["Directly", "Inversely", "Not", "Exponentially"],
+            answer: 1,
+            feedback: "Pressure vs Volume! 🎈 Pressure goes UP, Volume goes DOWN."
+        },
+        {
+            q: "Density Check: At a depth of 40 metres (5 Bar absolute), how much denser is the air you breathe compared to the surface?",
+            options: ["2 times", "4 times", "5 times", "10 times"],
+            answer: 2,
+            feedback: "Heavy Air! 🏋️‍♂️ At 5 Bar, the molecules are squeezed into 1/5th the space, making it 5x denser."
+        },
+        {
+            q: "A 60-liter flexible container at the surface is taken to 10 metres (2 Bar absolute). What is its new volume?",
+            options: ["120 liters", "60 liters", "30 liters", "20 liters"],
+            answer: 2,
+            feedback: "Shrinkage! 🤏 60L / 2 Bar = 30 Liters."
+        },
+        {
+            q: "A 12-liter balloon is filled at 40 metres (5 Bar absolute). What will its volume be at the surface?",
+            options: ["60 liters", "12 liters", "2.4 liters", "120 liters"],
+            answer: 0,
+            feedback: "The Big Bang! 💥 12L * 5 Bar = 60 Liters at surface. Hope you didn't tie it!"
+        },
+        {
+            q: "Archimedes' Principle states that an object is buoyed up by a force equal to the ________ of the fluid it displaces.",
+            options: ["Volume", "Mass", "Weight", "Surface Area"],
+            answer: 2,
+            feedback: "Eureka! 🛀 The water you shove out of the way pushes back with its own weight."
+        },
+        {
+            q: "Master Formula: To find the buoyancy of an object, you use: (Liters Displaced x Water Weight) ________ Object Weight.",
+            options: ["Plus", "Minus", "Divided by", "Multiplied by"],
+            answer: 1,
+            feedback: "Lift Formula! 🗜️ Upward force (displaced water) vs Downward force (object weight)."
+        },
+        {
+            q: "Calculation: A 150kg motor at sea displaces 60 Liters. Is it buoyant?",
+            options: ["Yes, +61.8 kg", "No, -88.2 kg", "Yes, +88.2 kg", "It is neutral"],
+            answer: 1,
+            feedback: "Sink or Swim! ⚓ 60L * 1.03 = 61.8kg lift. 61.8 - 150 = -88.2kg (negative buoyancy)."
+        },
+        {
+            q: "Which water type provides more 'lift' or makes it easier to be neutrally buoyant?",
+            options: ["Fresh Water", "Salt Water", "Chlorinated Pool Water", "Distilled Water"],
+            answer: 1,
+            feedback: "Salty Lift! 🧂 Because salt water weighs more (1.03kg vs 1.0kg), it pushes up harder."
+        },
+        {
+            q: "True or False: Depth has NO effect on determining the buoyancy of a solid, rigid object.",
+            options: ["True", "False"],
+            answer: 0,
+            feedback: "Rigid Truth! 💎 If the object doesn't shrink, it always displaces the same amount of water, regardless of depth."
+        },
+        {
+            q: "What is the formula for calculating Air Consumption at depth?",
+            options: ["SCR x Depth", "SCR x Ambient Pressure", "Tank Pressure - Depth", "SCR / Ambient Pressure"],
+            answer: 1,
+            feedback: "Tank Drainer! 🕒 Your Surface Consumption Rate (SCR) multiplied by the Bar/Atmosphere at depth."
+        },
+        {
+            q: "If your Surface Air Consumption is 2 Bar/min, how much air will you use per minute at 30 metres (4 Bar absolute)?",
+            options: ["2 bar/min", "4 bar/min", "6 bar/min", "8 bar/min"],
+            answer: 3,
+            feedback: "Gulping Air! 🌬️ 2 Bar/min * 4 Bar = 8 Bar per minute."
+        },
+        {
+            q: "Sound underwater seems to come from directly ________ because it travels so fast your brain can't process the time difference.",
+            options: ["Below you", "The sides", "Overhead", "Behind you"],
+            answer: 2,
+            feedback: "Overhead Noise! 🚁 It hits both ears 'instantly', so your brain just points UP."
+        }
     ]
 };

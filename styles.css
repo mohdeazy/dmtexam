@@ -79,7 +79,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
     background: linear-gradient(to right, #48cae4, #00b4d8);
     -webkit-background-clip: text;
@@ -88,13 +88,14 @@ h1 {
 }
 
 p.subtitle {
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
     opacity: 0.8;
 }
 
 .btn-group {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -278,4 +279,99 @@ p.subtitle {
     font-size: 0.85rem;
     font-style: italic;
     color: var(--teal);
+}
+
+/* Mobile Optimization: One-Page Feel */
+@media (max-width: 600px) {
+    #app-container {
+        width: 98%;
+        padding: 0.7rem;
+        border-radius: 12px;
+        transform: translateY(-55px); /* Maximized vertical lift */
+    }
+
+    h1 {
+        font-size: 1.15rem;
+        margin-bottom: 0.1rem;
+    }
+
+    p.subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-group {
+        gap: 0.35rem;
+    }
+
+    .button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .quiz-header {
+        margin-bottom: 0.35rem;
+        font-size: 0.75rem;
+    }
+
+    .progress-container {
+        margin: 0 0.4rem;
+        height: 5px;
+    }
+
+    .card {
+        padding: 0.6rem;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .question-text {
+        font-size: 0.92rem;
+        line-height: 1.25;
+        margin-bottom: 0.5rem;
+    }
+
+    .options {
+        gap: 0.35rem;
+    }
+
+    .option {
+        padding: 0.35rem 0.5rem;
+    }
+
+    .option-letter {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        font-size: 0.65rem;
+        margin-right: 0.4rem;
+    }
+
+    .option-text {
+        font-size: 0.78rem;
+    }
+
+    .feedback {
+        margin-top: 0.4rem;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .feedback h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .footer-credits {
+        margin-top: 0.6rem;
+        padding-top: 0.4rem;
+        font-size: 0.65rem;
+    }
+
+    #final-score {
+        font-size: 2.2rem;
+        margin: 0.4rem 0;
+    }
 }
