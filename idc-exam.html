@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>IDC Dive Theory Exam 2 | Flashcards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Passcode Screen */
+        #lock-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0; left: 0;
+            background: linear-gradient(135deg, #03045e 0%, #023e8a 50%, #0077b6 100%);
+            z-index: 9999;
+        }
+        #lock-screen h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #48cae4, #00b4d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.4rem;
+        }
+        #lock-screen p {
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 1.8rem;
+            font-size: 0.95rem;
+        }
+        #lock-box {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            min-width: 300px;
+        }
+        .lock-icon {
+            font-size: 3rem;
+        }
+        #passcode-input {
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            border-radius: 12px;
+            padding: 0.9rem 1.5rem;
+            color: #fff;
+            font-size: 1.6rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5rem;
+            text-align: center;
+            width: 200px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        #passcode-input:focus {
+            border-color: #00b4d8;
+        }
+        #passcode-input::placeholder {
+            letter-spacing: 0.1rem;
+            font-size: 1rem;
+            opacity: 0.5;
+        }
+        #lock-error {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            min-height: 1.2em;
+            display: none;
+        }
+        #unlock-btn {
+            background: linear-gradient(45deg, #0077b6, #00b4d8);
+            color: white;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        #unlock-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,180,216,0.4);
+        }
+        #unlock-btn:active { transform: scale(0.95); }
+        .shake {
+            animation: shakeIt 0.4s ease;
+        }
+        @keyframes shakeIt {
+            0%,100%{transform:translateX(0)}
+            20%{transform:translateX(-8px)}
+            40%{transform:translateX(8px)}
+            60%{transform:translateX(-6px)}
+            80%{transform:translateX(6px)}
+        }
+        #app-container { display: none; }
+        #app-container.unlocked { display: block; }
+        .section-badge {
+            font-size: 0.7rem;
+            background: rgba(0,180,216,0.25);
+            color: #48cae4;
+            border: 1px solid rgba(72,202,228,0.4);
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            #lock-screen h2 { font-size: 1.4rem; }
+            #lock-box { min-width: unset; width: 90%; padding: 1.8rem 1.2rem; }
+            #passcode-input { width: 160px; font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lock Screen -->
+    <div id="lock-screen">
+        <h2>🔱 IDC Dive Theory</h2>
+        <p>Exam 2 — Course Director Manual</p>
+        <div id="lock-box">
+            <div class="lock-icon">🔐</div>
+            <input type="password" id="passcode-input" maxlength="4" placeholder="••••" autocomplete="off" inputmode="numeric" />
+            <div id="lock-error">Wrong passcode. Try again.</div>
+            <button id="unlock-btn" onclick="tryUnlock()">Unlock</button>
+        </div>
+    </div>
+
+    <div class="bubbles" id="bubble-container"></div>
+
+    <!-- Main App -->
+    <main id="app-container">
+
+        <!-- Home Screen -->
+        <section id="home-screen" class="screen active">
+            <h1>🔱 IDC Dive Theory Exam 2</h1>
+            <p class="subtitle">Course Director Manual — Select a topic to begin.</p>
+            <div class="btn-group">
+                <button class="button" onclick="startExam('Physics')">Physics</button>
+                <button class="button" onclick="startExam('Physiology')">Physiology</button>
+                <button class="button" onclick="startExam('Equipment')">Equipment</button>
+                <button class="button" onclick="startExam('DSE')">Diving Skills &amp; Env.</button>
+                <button class="button" onclick="startExam('RDP')">RDP</button>
+            </div>
+            <div class="footer-credits">
+                <p>Made by Mohd Eazy @ <a href="https://scubamalaysia.com" target="_blank">Scuba Malaysia</a></p>
+                <p class="reminder">✨ IDC Exam 2 prep. Study hard, dive safe! ✨</p>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <span id="question-counter">Question 1/20</span>
+                <div class="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <span id="current-score">Score: 0</span>
+            </div>
+            <div id="card-container" class="card">
+                <div class="section-badge" id="section-badge">Physics</div>
+                <h2 class="question-text" id="question-text">Loading question...</h2>
+                <div class="options" id="options-container"></div>
+                <div id="feedback" class="feedback">
+                    <h3 id="feedback-title">Correct!</h3>
+                    <p id="feedback-text"></p>
+                    <p class="correct-answer-reveal" id="correct-answer-reveal"></p>
+                </div>
+            </div>
+            <div class="quiz-nav">
+                <button class="nav-arrow" id="prev-btn" onclick="prevQuestion()" title="Previous">◀</button>
+                <button class="button" id="submit-btn" onclick="submitAnswer()">Submit</button>
+                <button class="button" id="next-btn" style="display:none;" onclick="nextQuestion()">Next ➔</button>
+                <button class="nav-arrow" id="skip-btn" onclick="skipQuestion()" title="Skip">▶</button>
+                <button class="nav-home" onclick="resetApp()" title="Home">🏠</button>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="result-screen" class="screen">
+            <h1>🌊 Dive Complete!</h1>
+            <p class="subtitle">You've surfaced. Here's your result:</p>
+            <div id="final-score">0/20</div>
+            <p id="score-comment">Keep it up!</p>
+            <div class="btn-group" style="margin-top:2rem;">
+                <button class="button" onclick="resetApp()">Start Again 🔄</button>
+            </div>
+        </section>
+
+    <!-- Unanswered Modal -->
+    <div id="unanswered-modal" class="unanswered-overlay">
+        <div class="unanswered-box">
+            <h3>⚠️ Not Done Yet!</h3>
+            <p id="unanswered-msg">Some questions still need your answer. Tap a number to go there.</p>
+            <div class="unanswered-grid" id="unanswered-grid"></div>
+            <button class="button" onclick="closeUnansweredModal()" style="font-size:0.85rem;padding:0.6rem 1.8rem;">Back to Quiz</button>
+        </div>
+    </div>
+
+    </main>
+
+    <script>
+    // ── Passcode gate ─────────────────────────────────────────────────────────
+    (function(){
+        var _w = [53,56,56,52];
+        window._gk = function(v){ return v===_w.map(function(n){return String.fromCharCode(n);}).join(''); };
+    })();
+
+    function tryUnlock() {
+        var input = document.getElementById('passcode-input').value;
+        var errEl = document.getElementById('lock-error');
+        var box   = document.getElementById('lock-box');
+        if (_gk(input)) {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('app-container').classList.add('unlocked');
+            createBubbles();
+        } else {
+            errEl.style.display = 'block';
+            box.classList.remove('shake');
+            void box.offsetWidth;
+            box.classList.add('shake');
+            document.getElementById('passcode-input').value = '';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('passcode-input').addEventListener('keydown', function(e){
+            if (e.key === 'Enter') tryUnlock();
+        });
+    });
+
+    // ── Questions ─────────────────────────────────────────────────────────────
+    var questions = {
+
+        Physics: [
+            {
+                q: "When the pressure surrounding a liquid saturated with nitrogen (such as your blood during a dive) is suddenly reduced,",
+                options: ["oxygen bubbles may form.", "more gas will dissolve into the liquid.", "the gas dissolved in the liquid will come out of solution.", "the liquid heats to a boil."],
+                answer: 2,
+                feedback: "Henry's Law in reverse! 💨 When pressure drops suddenly, dissolved gas escapes out of solution — this is exactly how decompression sickness begins."
+            },
+            {
+                q: "The inert gas argon is sometimes used as a",
+                options: ["dry suit inflation gas.", "breathing gas for tec divers in deep waters.", "cleaning gas during cylinder testing.", "gas in recompression chambers."],
+                answer: 0,
+                feedback: "Argon is denser than air and a fantastic insulator — perfect for dry suit inflation to keep you warm on cold dives! 🥶 Not for breathing though!"
+            },
+            {
+                q: "If a cylinder has 0.3% carbon monoxide at the surface, what percentage of carbon monoxide will be present in the cylinder at 35 metres/115 feet?",
+                options: ["0.3%", "1.05%", "10.5%", "3%"],
+                answer: 0,
+                feedback: "Dalton's Law — the percentage stays the same regardless of depth! 📊 It's the partial pressure that increases. 0.3% CO at surface = 0.3% CO at 35m. Dangerously, the effect is much worse."
+            },
+            {
+                q: "If you make a dive in temperate water wearing a wet suit that's not suitable for the temperature, most of the heat loss will occur through",
+                options: ["convection.", "conduction.", "convention.", "collusion."],
+                answer: 1,
+                feedback: "Conduction! 🧊 Water conducts heat away from your body about 25 times faster than air. The wrong suit = fast heat loss through direct contact."
+            },
+            {
+                q: "Approximately how much denser is the air a diver breathes at a depth of 30 metres/99 feet as compared to the surface?",
+                options: ["Equivalent to the surface density", "Two times as dense", "Three times as dense", "Four times as dense"],
+                answer: 3,
+                feedback: "At 30m you're at 4 ATA — so air is four times denser than at the surface. 💪 Your lungs and regulator work harder. This is why breathing technique matters at depth!"
+            },
+            {
+                q: "You're diving a reef at 30 metres/100 feet. To get the desired bottom time within your gas plan, you decide to cut your gas consumption in half by ascending to a shallower depth. You signal your buddy to go up, and ascend to",
+                options: ["5 metres/15 feet.", "10 metres/33 feet.", "15 metres/50 feet.", "20 metres/70 feet."],
+                answer: 1,
+                feedback: "At 10m (2 ATA) you breathe half the volume compared to 30m (4 ATA)! ⬆️ Boyle's Law saves your gas — and doubles your bottom time. Smart dive planning!"
+            },
+            {
+                q: "A balloon is filled with 90 litres/3 cubic feet of air at room temperature. What would happen to that balloon if it were put into a freezer at a constant ambient pressure?",
+                options: ["The volume would decrease", "The volume would increase", "The volume would remain constant", "The volume would fluctuate wildly"],
+                answer: 0,
+                feedback: "Charles' Law! 🥶 At constant pressure, volume decreases as temperature drops. Cold air takes up less space — the balloon shrinks in the freezer."
+            },
+            {
+                q: "A diver can clearly hear the sound of a boat engine in the distance, but will have difficulty determining the direction of the boat because",
+                options: ["water in the diver's ear canal muffles the sound.", "sound travels more slowly through water.", "the sound radiates out from the boat.", "there is an insufficient delay between the sound striking each ear."],
+                answer: 3,
+                feedback: "Sound travels 4x faster underwater! 👂 It hits both ears almost simultaneously, so your brain can't detect the tiny delay it uses to figure out direction. Tricky ocean acoustics!"
+            },
+            {
+                q: "What is the absolute pressure at a depth of 34 metres/112 feet of sea water?",
+                options: ["2.4 ata/35.1 psia", "3.4 ata/49.8 psia", "4.4 ata/64.5 psia", "5.4 ata/79.2 psia"],
+                answer: 2,
+                feedback: "34m in sea water = 3.4 atm gauge pressure + 1 atm surface = 4.4 ata absolute. 📐 Every 10m of salt water adds 1 atm. The math always checks out!"
+            },
+            {
+                q: "Changing speed of light causes light to bend. In diving, we're most affected with light bending as it",
+                options: ["passes through areas of high turbidity to low turbidity.", "passes from the water through glass into the air in your mask.", "travels from warm water to cooler water.", "bounces off the surface of the water."],
+                answer: 1,
+                feedback: "Refraction! 🔍 Light bends as it passes from water through glass into the air space of your mask. This makes objects appear 25% closer and 33% larger than they really are. Don't grab for that fish!"
+            },
+            {
+                q: "The outside temperature is warm but you'll be diving in a very cold lake. You've had your cylinder filled and it's in the back of the car. Your regulator has an environmental seal. What will happen to your air supply when you enter the lake for your dive, and what impact will this have on your dive?",
+                options: ["The gas pressure will decrease and this will impact your turn pressure planning.", "The gas pressure will increase and this will impact how long your dive is going to be.", "The gas pressure will remain exactly the same and there's no impact on your dive plan.", "The regulator will freeflow, and this will impact your exit plans."],
+                answer: 0,
+                feedback: "Gay-Lussac's Law! 🌡️ Warm cylinder goes into cold water — gas temperature drops, so pressure drops too. Recalculate your turn pressure to account for less gas than you expected!"
+            },
+            {
+                q: "At one time, capillary depth gauges were popular in diving — these gauges were simply a small tube open at one end. As you descended, water pressure compressed the air and you read the depth on a scale at the end of the compressed air column. Based on your knowledge of Boyle's Law, you would expect the depth increments to be spaced ________ as you went deeper.",
+                options: ["farther apart", "closer together", "the same as shallower", "irregularly"],
+                answer: 0,
+                feedback: "Boyle's Law at work! 📏 As depth increases, pressure changes become proportionally smaller relative to the total pressure. The depth increments spread farther apart on the scale as you go deeper."
+            },
+            {
+                q: "If an object that weighs 85 kilograms/187 pounds is neutrally buoyant in salt water, what is the volume of water the object displaces?",
+                options: ["87.5 litres/3.2 cubic feet", "85 liters/3 cubic feet", "82.5 litres/2.9 cubic feet", "170 litres/6 cubic feet"],
+                answer: 2,
+                feedback: "Archimedes nailed it! ⚖️ Neutral buoyancy in salt water: weight = displaced water weight. 85kg ÷ 1.03 kg/L = 82.5 litres displaced. Salt water is heavier so you need less volume!"
+            },
+            {
+                q: "If a diver weighing 85 kilograms/187 pounds is neutrally buoyant in salt water, the same diver with the same equipment would ________ in fresh water.",
+                options: ["remain neutral", "float", "sink", "bounce"],
+                answer: 2,
+                feedback: "Fresh water is less dense! 🏊 The same volume of fresh water weighs less than salt water — so it can't support as much weight. Neutral in salt = sinking in fresh. Add some weight! 🏋️"
+            },
+            {
+                q: "If the upward force of buoyancy is equal to the downward pull of gravity, the result is a state of ________ buoyancy.",
+                options: ["positive", "neutral", "negative", "fluctuating"],
+                answer: 1,
+                feedback: "Neutral buoyancy — the holy grail of scuba diving! ⚖️ Up force equals down force. You hover effortlessly. Master this and you've mastered diving!"
+            },
+            {
+                q: "Approximately how much air must be pumped down from the surface to fill a 50-litre container if the container lies in 40 metres/132 feet of sea water?",
+                options: ["50 litres", "200 litres", "250 litres", "300 litres"],
+                answer: 2,
+                feedback: "At 40m = 5 ATA! 🧮 You need 5x surface volume to fill the container under that pressure. 50L × 5 = 250 litres pumped from the surface. Boyle's Law doing the heavy lifting!"
+            },
+            {
+                q: "A phenomenon called \"visual reversal,\" usually occurring in low visibility water, makes objects viewed underwater appear ________ than they actually are.",
+                options: ["more distant", "closer", "brighter in color", "distorted"],
+                answer: 0,
+                feedback: "Visual reversal flips your perception! 👀 In low viz, the lack of reference points tricks your brain into thinking objects are farther away. Navigate carefully — distances are deceiving!"
+            },
+            {
+                q: "A sealed balloon containing two litres of air at 10 metres/33 feet of depth in the ocean is released. What will its volume be when it reaches the surface (assuming it doesn't rupture)?",
+                options: ["Two litres", "Four litres", "Three litres", "One litre"],
+                answer: 1,
+                feedback: "Boyle's Law! 🎈 At 10m = 2 ATA. As it rises to 1 ATA surface pressure, volume doubles. 2 litres × 2 = 4 litres. Don't hold your breath — and neither should the balloon!"
+            },
+            {
+                q: "What is the minimum amount of water that must be displaced from a lifting device to bring a 453.5-kilogram/1,000-pound anchor to the surface from 40 metres/132 feet of salt water if the anchor displaces 254.8 litres/nine cubic feet?",
+                options: ["185.5 litres/6.6 cubic feet", "191 litres/6.9 cubic feet", "198 litres/7 cubic feet", "255 litres/9 cubic feet"],
+                answer: 0,
+                feedback: "Anchor weight minus its own buoyancy = additional lift needed! ⚓ 453.5kg - (254.8L × 1.03kg/L) = 453.5 - 262.4 = ~191kg lift... Work through the numbers carefully with your CDM constants!"
+            },
+            {
+                q: "A diver is using a cylinder filled with air (21% oxygen, 79% nitrogen). With respect to the oxygen, at approximately what depth would breathing this mix have the same effect as breathing pure oxygen at the surface?",
+                options: ["40 metres/130 feet", "50 metres/165 feet", "80 metres/260 feet", "30 metres/100 feet"],
+                answer: 0,
+                feedback: "Dalton's Law! 🧮 Pure O₂ at surface = 1.0 ATA O₂. Air has 21% O₂. To get same O₂ partial pressure: 1.0 ÷ 0.21 = 4.76 ATA ≈ 38m. Closest answer is 40m/130ft!"
+            }
+        ],
+
+        Physiology: [
+            {
+                q: "To reduce the effects of dead-air space, gas density and turbulence, you should always",
+                options: ["use a regulator with a downstream valve.", "breathe deeply and slowly while diving.", "maintain neutral buoyancy and have good trim.", "use a regulator with a balanced first stage."],
+                answer: 1,
+                feedback: "Deep, slow breaths are your best friend! 🧘 They reduce CO₂ buildup, minimize dead-air space effects, and decrease gas turbulence in your lungs. Breathe like a pro, dive like a pro!"
+            },
+            {
+                q: "Oxygen and ________ are the two gases most important to your metabolic processes.",
+                options: ["carbon monoxide", "carbon dioxide", "helium", "nitrogen"],
+                answer: 1,
+                feedback: "Oxygen and carbon dioxide! 🫁 O₂ powers your cells, CO₂ is the waste product AND the signal that tells your brain it's time to breathe. Both are critical to life!"
+            },
+            {
+                q: "Carbon monoxide is difficult to detect because it",
+                options: ["is odorless and tasteless.", "is inert.", "has a sedative effect.", "doesn't have a strong smell."],
+                answer: 0,
+                feedback: "The silent killer! ⚠️ Odorless, colorless, and tasteless — you can't smell, see, or taste it. CO bonds to haemoglobin 200x more strongly than oxygen. Always fill from a trusted, clean source!"
+            },
+            {
+                q: "If a diver surfaces from an uneventful dive with some blood and mucus in her mask, she is likely to have suffered a",
+                options: ["middle ear squeeze.", "sinus squeeze.", "round window rupture.", "ear drum rupture."],
+                answer: 1,
+                feedback: "Sinus squeeze! 👃 Blood and mucus in the mask = sinus barotrauma. The sinuses couldn't equalize with the increasing pressure. Equalize early, equalize often — especially if congested!"
+            },
+            {
+                q: "Hard work, overexertion and improper breathing may primarily increase the level of ________ in the body, contributing to gas narcosis on deeper dives.",
+                options: ["carbon dioxide", "nitrogen", "argon", "carbon monoxide"],
+                answer: 0,
+                feedback: "CO₂ buildup makes narcosis worse! 💨 Overexertion and skip breathing raise CO₂ levels, which amplifies nitrogen narcosis at depth. Breathe fully and stay calm on deep dives!"
+            },
+            {
+                q: "On a local dive, you encounter a strong current at 15 metres/50 feet and begin to experience confusion and a feeling of air starvation. You should",
+                options: ["breathe from your buddy's alternate second stage.", "continue the dive, but at a shallower depth.", "stop, rest and breathe slowly and deeply.", "ascend to the surface as quickly as possible."],
+                answer: 2,
+                feedback: "Stop, rest, breathe! 🌊 Confusion + air hunger at depth likely means CO₂ buildup or early narcosis. Stop exerting, breathe slowly and deeply to flush CO₂. Don't bolt to the surface!"
+            },
+            {
+                q: "You're diving for the first time at the beginning of the dive season after having all your equipment serviced and your dry suit seals replaced. On the first dive of the day, you begin to feel light-headed and signal to your buddy to end the dive. The cause is most likely",
+                options: ["contaminated air.", "a neck seal that is too tight.", "a BCD that is too small.", "decompression illness."],
+                answer: 1,
+                feedback: "New neck seal = possible restriction! 🤿 A too-tight dry suit neck seal can compress the carotid arteries and jugular veins, reducing blood flow to the brain. Always check seal fit before diving!"
+            },
+            {
+                q: "Which of the following is a sign of heat exhaustion?",
+                options: ["Hot, flushed (red), dry skin", "Cool, dry skin", "Shivering", "Cool, clammy skin"],
+                answer: 3,
+                feedback: "Cool, clammy skin = heat exhaustion! 🌡️ The body is diverting blood to the skin to cool down — causing sweating and pallor. Hot, dry skin is the more dangerous heat stroke. Know the difference!"
+            },
+            {
+                q: "________ has one of the highest heat capacities of all naturally occurring substances.",
+                options: ["Water", "Air", "Argon", "Sulfuric acid"],
+                answer: 0,
+                feedback: "Water! 💧 It absorbs enormous amounts of heat before its temperature changes — which is exactly why the ocean stays cool even in summer. And why you get cold on dives so fast!"
+            },
+            {
+                q: "You've just climbed back onto the boat after a dive, and your buddy complains of dizziness, shortness of breath and skin close to the neck area that seems to crackle when touched. What's the best course of action?",
+                options: ["Provide oxygen and lie him down.", "Give him a warm drink and reassurance.", "Lie him down and ensure he is warm.", "Do nothing and let him get his breath back."],
+                answer: 0,
+                feedback: "Oxygen and lie down! 🆘 Crackling skin (subcutaneous emphysema) + dizziness + breathlessness = lung overexpansion injury. Administer 100% O₂ immediately and evacuate. This is serious!"
+            },
+            {
+                q: "You're on a dive boat traveling out for the first dive of a multi-dive day. This will be your deepest dive. You notice one of the dive group is much quieter than normal and seems withdrawn. This could be a sign of ________ and the appropriate action would be to ________.",
+                options: ["physical stress; keep an eye on the diver", "psychological stress; go over and chat with the diver", "decompression illness; provide oxygen", "a bad mood; keep out of the diver's way"],
+                answer: 1,
+                feedback: "Psychological stress is real and dangerous! 💬 A withdrawn, unusually quiet diver may be anxious or feeling overwhelmed. Go chat, make a connection, and assess before they enter the water!"
+            },
+            {
+                q: "Administering oxygen is an appropriate first-aid treatment for lung overexpansion injuries because it",
+                options: ["maximizes the effectiveness of the blood that reaches the affected tissues.", "calms the victim.", "increases the alveolar nitrogen partial pressure.", "helps keep any bubbles circulating."],
+                answer: 0,
+                feedback: "O₂ maximizes blood effectiveness! 💊 By breathing pure oxygen, you remove nitrogen from the blood — letting haemoglobin carry more oxygen to damaged tissues. It also helps shrink nitrogen bubbles. Gold standard first aid!"
+            },
+            {
+                q: "Regardless of how long a person has been submerged, in cases of drowning the primary first aid for a nonbreathing diver after reaching the surface is immediate",
+                options: ["oxygen administration.", "rescue breathing.", "recompression treatment.", "evacuation."],
+                answer: 1,
+                feedback: "Rescue breathing first! 🫁 A non-breathing person needs ventilation immediately — get air into those lungs NOW. Oxygen administration and evacuation come after breathing is restored!"
+            },
+            {
+                q: "Your buddy from a dive three days ago calls to complain he has had joint pain in his arm. He explains that the pain appeared a couple hours ago, was very sharp, then subsided and has now disappeared. He has taken no medication. You know he has been playing tennis since the dive. You",
+                options: ["suspect he has decompression illness.", "suspect he has carbon monoxide poisoning.", "suspect he has oxygen poisoning.", "suspect he overdid the game of tennis."],
+                answer: 3,
+                feedback: "Tennis elbow is the likely culprit! 🎾 DCS joint pain typically appears within hours of surfacing, not three days later. And playing tennis since the dive points to the real cause. But if ever in doubt — treat for DCS!"
+            },
+            {
+                q: "After a dive, ________ may be present in a diver's circulation system, yet the diver may not display any symptoms of decompression illness.",
+                options: ["embolisms", "large blood vessel blockages", "transparent bubbles", "silent bubbles"],
+                answer: 3,
+                feedback: "Silent bubbles! 🔇 Detectable by Doppler ultrasound but causing no symptoms — yet. They're a reminder that diving always involves some nitrogen risk. This is why conservative dive profiles matter!"
+            },
+            {
+                q: "Cigarette smoking prior to a dive should be avoided because it ________ the body's ability to transport oxygen due to an increased level of ________ in the lungs.",
+                options: ["increases; nitrogen", "decreases; carbon monoxide", "increases; carbon dioxide", "decreases; nicotine"],
+                answer: 1,
+                feedback: "Smoking and diving don't mix! 🚭 Carbon monoxide from cigarettes binds to haemoglobin, reducing its ability to carry oxygen. Smoking before a dive is genuinely dangerous — your body is already compromised before you hit the water."
+            },
+            {
+                q: "Filling scuba cylinders with pure oxygen for recreational diving is not advised because:",
+                options: ["the body needs to obtain nitrogen from breathing air.", "it can increase the risk of decompression sickness.", "the cylinder will not hold as much when filled only with oxygen.", "breathing pure oxygen under pressure can be toxic, even at shallow depths."],
+                answer: 3,
+                feedback: "O₂ toxicity is real and deadly! ⚠️ Breathing pure oxygen under pressure can cause CNS oxygen toxicity — leading to convulsions underwater with no warning. Even at 6m, pure O₂ becomes dangerous quickly!"
+            },
+            {
+                q: "Signs and symptoms of DCS and lung overexpansion injuries are",
+                options: ["usually easy for a dive professional to distinguish.", "always obvious.", "sometimes not best treated with 100 percent oxygen.", "often the same."],
+                answer: 3,
+                feedback: "Often the same! 🆘 Both DCS and lung overexpansion injuries can present with joint pain, numbness, dizziness, and breathing difficulty. This is why the treatment — 100% O₂ and evacuation — works for both. When in doubt, treat!"
+            },
+            {
+                q: "The mammalian diving reflex refers to the tendency for a breathhold diver's ________ when submerged into cold water.",
+                options: ["throat to constrict", "oxygen levels to fall", "heart rate to decrease", "heart rate to increase"],
+                answer: 2,
+                feedback: "The diving reflex slows your heart! 🐬 Cold water on the face triggers bradycardia — heart rate drops to conserve oxygen for vital organs. This ancient survival mechanism is shared by all mammals, from seals to humans!"
+            },
+            {
+                q: "On a dive to 30 metres/100 feet, you notice your buddy is quite distracted, chasing fish and getting farther from you without noticing it. You catch up with him but he's slow to understand your hand signals. It's best for you and your buddy to",
+                options: ["stay much closer together and continue the dive.", "ascend to a shallower depth.", "abort the dive immediately.", "continue until you reach your maximum planned depth."],
+                answer: 1,
+                feedback: "Ascend to a shallower depth! ⬆️ Slow reactions and distraction at 30m = nitrogen narcosis. Ascending to a shallower depth reduces narcosis effect. Never ignore the signs — safety over sightseeing!"
+            }
+        ],
+
+        Equipment: [
+            {
+                q: "When diving with a closed-circuit rebreather (CCR), you primarily use ________ to fine tune your buoyancy.",
+                options: ["breath control", "ankle weights", "BCD inflation/deflation", "weight belt"],
+                answer: 2,
+                feedback: "BCD on a CCR! 🔄 Unlike open circuit where breathing changes your volume, a CCR maintains a constant loop volume. So you use BCD inflation/deflation for fine buoyancy control just like open circuit!"
+            },
+            {
+                q: "Which part of a standard regulator reduces high pressure to intermediate pressure?",
+                options: ["Environmental seal", "1st stage", "2nd stage", "Burst disc"],
+                answer: 1,
+                feedback: "The 1st stage does the heavy lifting! 🔧 It drops cylinder pressure (200+ bar) down to intermediate pressure (~10 bar above ambient). The 2nd stage then drops it further to ambient for breathing."
+            },
+            {
+                q: "Most current regulators, alternate air sources, SPGs and BCDs can be used with EANx blends of up to _____ oxygen without modification. This guideline is in place due to the increasing risk of _______ reactions with higher percentages.",
+                options: ["21%; corrosive", "32%; galvanic", "36%; chemical", "40%; oxidation"],
+                answer: 3,
+                feedback: "40% is the magic number! 🔥 Above 40% oxygen, the risk of oxidation reactions increases dramatically — regular lubricants and materials can ignite. Always use O₂-clean, O₂-compatible equipment for higher mixes!"
+            },
+            {
+                q: "A ________ connection on a scuba cylinder allows the regulator to be screwed directly into the cylinder valve.",
+                options: ["manifold", "DIN", "yoke screw", "K-valve"],
+                answer: 1,
+                feedback: "DIN connection! 🔩 The regulator screws directly into the valve — creating a stronger, more secure seal. Popular in technical diving and high-pressure cylinders. Less chance of o-ring blowout at depth!"
+            },
+            {
+                q: "Unlike standard inflatable signal tubes, delayed surface marker buoys (DSMBs) have a ________ and feature ________.",
+                options: ["brighter color; over-pressure valves", "reel; a dump valve", "non-spill design; over-pressure valves", "carabiner; carry straps"],
+                answer: 2,
+                feedback: "Non-spill design + over-pressure valves! 🚀 DSMBs are designed to be inflated underwater and stay inflated — the non-spill prevents water entry, and over-pressure valves prevent bursting. Essential safety kit!"
+            },
+            {
+                q: "A (+) sign after the date of the last hydrostatic test date on a(n) ________ cylinder means the cylinder can be filled to ________ above the listed pressure.",
+                options: ["steel; 10 percent", "steel; 20 percent", "aluminum; 20 percent", "aluminum; 10 percent"],
+                answer: 0,
+                feedback: "Steel + 10%! 🏷️ The (+) mark on a steel cylinder means it passed a special test allowing overfill to 10% above rated pressure. Aluminum cylinders use the star (*) system instead. Know your markings!"
+            },
+            {
+                q: "An uncontrollable regulator freeflow could be caused by",
+                options: ["extremely cold water.", "deep breathing.", "unconventional hose routing.", "skip breathing."],
+                answer: 0,
+                feedback: "Cold water causes freeflow! 🥶 Ice crystals can form inside the regulator 1st stage, jamming the valve open. This is why regulators in cold water need an environmental (dry) seal to keep water out of the mechanism!"
+            },
+            {
+                q: "The marking ________ indicates an aluminum cylinder.",
+                options: ["3AL", "3000", "ALUM", "DOT-AL"],
+                answer: 0,
+                feedback: "3AL is the stamp! 🏷️ It's the US DOT specification for aluminum cylinders — '3' is the material spec number, 'AL' means aluminum alloy. Always check your cylinder markings before diving!"
+            },
+            {
+                q: "The ________ in a cylinder valve relieves overpressure from an overheated or overfilled cylinder.",
+                options: ["o-ring", "pressure gauge", "environmental seal", "burst disk"],
+                answer: 3,
+                feedback: "The burst disk is your safety fuse! 💥 Designed to rupture at a specific pressure before the cylinder itself fails. It's a one-time device — once blown, the cylinder needs a new one before refilling!"
+            },
+            {
+                q: "You're planning a dive in the ocean wearing equipment you've only worn in fresh water. You should ________ to account for the change to salt water.",
+                options: ["add 2 kilograms/4 pounds of weight", "perform a buoyancy check", "remove 2 kilograms/4 pounds of weight", "make no adjustments"],
+                answer: 1,
+                feedback: "Always do a buoyancy check! ✅ Salt water is denser so you'll be more buoyant than in fresh water. Never assume — actual conditions vary. A proper surface buoyancy check is the only reliable way to know!"
+            },
+            {
+                q: "Scuba regulators are referred to as open-circuit ________ because they are activated by ________ and exhaust is vented into the water.",
+                options: ["demand valves; diver inhalation", "upstream valves; cylinder air flow", "balanced valves; diver exhalation", "downstream valves; water pressure"],
+                answer: 0,
+                feedback: "Demand valves activated by inhalation! 💨 You create a slight negative pressure by inhaling — this 'demands' gas from the regulator. No inhale = no flow. Efficient, elegant engineering!"
+            },
+            {
+                q: "You've just had your latex neck seal on your dry suit replaced by your local PADI Dive Center, and when you try the suit on the seal feels very tight. You should",
+                options: ["not worry as it's latex and will stretch quickly on your first dive.", "trim it with scissors, in small amounts until you get the correct fit.", "make a small v-shaped notch in it so it's a little bigger.", "leave it as is but use lots of talcum powder (or similar) to ease it on."],
+                answer: 1,
+                feedback: "Trim carefully with scissors — small amounts at a time! ✂️ Never cut a V-notch — it creates a stress point that can tear further and ruin the seal entirely. Gradual trimming until the fit is correct is the safe approach!"
+            },
+            {
+                q: "Modern second stages are designed to freeflow if they malfunction. This is due to their ________ design, meaning that if the downstream valve fails it almost always fails in an open position.",
+                options: ["upstream", "balanced", "fail-safe", "open-circuit"],
+                answer: 2,
+                feedback: "Fail-safe design! 🛡️ The downstream valve is pushed open by gas pressure — if it fails, it defaults to open (freeflow). You'd rather have too much gas than a completely shut regulator at depth. Safety built in!"
+            },
+            {
+                q: "Dive computers with integrated SPGs or gas pressure features can track your depth, time and ________. An enriched air dive computer can also calculate your ________.",
+                options: ["heading; oxygen exposure", "gas consumption; oxygen exposure", "gas pressure; carbon monoxide level", "heading; nitrogen saturation level"],
+                answer: 1,
+                feedback: "Gas consumption + oxygen exposure! 💻 Integrated computers track your gas consumption rate in real-time — and EANx computers add CNS% oxygen tracking so you know exactly where you stand on your oxygen clock!"
+            },
+            {
+                q: "You're preparing a dive when you discover the mouthpiece on your primary second stage regulator is damaged. This is",
+                options: ["acceptable for experienced divers, but not for new divers.", "a minor inconvenience that doesn't need to be fixed immediately.", "a potential stressor for any diver and may lead to other problems.", "an indicator that the regulator needs a complete overhaul."],
+                answer: 2,
+                feedback: "A potential stressor — fix it before the dive! 🔧 Any equipment issue can create anxiety underwater, leading to poor decisions. A damaged mouthpiece can also flood your regulator. Never dive with known equipment problems!"
+            },
+            {
+                q: "During a dive on which one buddy has a dive computer and the other is using tables, both divers should",
+                options: ["dive within the limits of the most conservative tool.", "dive to the maximum limits allowed by the dive computer.", "dive to their own personal limits.", "dive to either the table or computer limits, as long as they're diving on the same dive profile."],
+                answer: 0,
+                feedback: "Most conservative tool wins! 📊 Always dive within the most conservative limits — whether it's the table or the computer. Buddy teams dive together and exit together. The diver with less bottom time sets the limit!"
+            },
+            {
+                q: "Diaphragm or piston valves are most likely found in the ________ of a scuba regulator.",
+                options: ["first stage", "high-pressure ports", "second stage", "both first and second stages"],
+                answer: 0,
+                feedback: "First stage mechanisms! 🔧 Diaphragm and piston designs are both found in the 1st stage — they're the two main methods of reducing high cylinder pressure to intermediate pressure. Different designs, same job!"
+            },
+            {
+                q: "Ideally, I should use a lift bag with ________ than the apparent weight of the object I'm bringing up, and as a recreational diver, I should not attempt to bring up an object weighing more than ________.",
+                options: ["significantly more lift; 45 kilograms/100 pounds", "significantly more lift; 7 kilograms/15 pounds", "slightly more lift; 7 kilograms/15 pounds", "slightly more lift; 45 kilograms/100 pounds"],
+                answer: 3,
+                feedback: "Slightly more lift, max 45kg/100lbs! ⚓ You want just enough extra lift to move the object — too much and it rockets to the surface uncontrolled. And know your limits as a recreational diver — heavy lifts need proper training!"
+            },
+            {
+                q: "When using an alternate inflator regulator, which combines a second stage with the BCD low-pressure inflator, you would ________ in an out-of-air emergency.",
+                options: ["pass this to your buddy to breathe from", "breathe from it yourself, and pass your primary second stage to your buddy", "breathe from it yourself and pass your buddy your other alternate air source", "buddy breathe from your primary second stage"],
+                answer: 1,
+                feedback: "Breathe from it yourself, donate your primary! 🤿 Since the alternate inflator is combined with your BCD inflator, it's awkward to donate. Keep it for yourself and hand your primary 2nd stage to your out-of-air buddy — it's already in their face!"
+            },
+            {
+                q: "You notice your dive cylinder feels heavier than usual and you think you can hear something loose moving inside. What should you do?",
+                options: ["Get another cylinder for the dive and put yours in for a hydrostatic test.", "Get another cylinder for the dive and put yours in for a visual inspection.", "Ignore it for the dive and plan to mention it when it is due for its annual inspection next month.", "Ask for a new gas fill for this dive and mention it at the next inspection."],
+                answer: 0,
+                feedback: "Get it hydro-tested now! 🚫 Something loose inside a cylinder is a serious red flag — possible corrosion, debris, or valve issues. Never dive a compromised cylinder. Swap it out and get yours inspected immediately!"
+            }
+        ],
+
+        DSE: [
+            {
+                q: "You and your buddy are on a night dive when you see a dive light ahead of you in the distance; the light is moving up and down slowly. This means a diver is signaling",
+                options: ["there's an emergency.", "a request for attention.", "that everything's OK.", "that it's the exit point."],
+                answer: 1,
+                feedback: "Slow up-down = 'I need your attention'! 🔦 In night diving: slow up-down = get attention, rapid side-to-side = emergency, circle = OK. Know your light signals before you go in the dark!"
+            },
+            {
+                q: "The Coriolis effect caused by the earth's rotation helps divers to understand",
+                options: ["gas movement in regulator second stages.", "local tidal range and the best time to dive.", "how to plan dives at altitudes above sea level.", "the direction of major ocean currents."],
+                answer: 3,
+                feedback: "Major ocean currents! 🌊 The Coriolis effect deflects moving water (and air) — creating the large-scale gyres and circulation patterns of the world's oceans. Understanding currents is key to safe dive planning!"
+            },
+            {
+                q: "When assisting a diver who is panicking at the surface, your first consideration should be",
+                options: ["getting the diver to talk to you and explain the problem.", "ensuring the diver is positively buoyant.", "having the diver put on his mask and breathe from the snorkel.", "telling the diver to stop panicking as it's not helping the situation."],
+                answer: 1,
+                feedback: "Positive buoyancy first! 🆘 A panicking diver who sinks is a drowning diver. Inflate that BCD immediately so they stay on the surface — everything else comes after they're floating safely!"
+            },
+            {
+                q: "You notice the weather forecast for tomorrow's dive indicates that it will be windy. You consider changing the planned site for one that's more protected because you're concerned about",
+                options: ["tides.", "haloclines.", "waves.", "rips."],
+                answer: 2,
+                feedback: "Wind creates waves! 🌬️ Strong wind = rough surface conditions = difficult entries/exits and uncomfortable surface swims. A protected bay or sheltered site makes everything safer when the forecast turns ugly!"
+            },
+            {
+                q: "Apart from removing items as part of an authorized project, removing objects from underwater should be avoided as it can destroy historical information and/or ________.",
+                options: ["portholes; can be dangerous", "old anchors; can be against the law", "debris (litter); make the site less interesting for others", "shells; upset others"],
+                answer: 2,
+                feedback: "Leave it for others to enjoy! 🌿 Removing debris or litter destroys the dive site experience and can damage marine ecosystems. What's junk to you might be home to a creature. Take only photos, leave only bubbles!"
+            },
+            {
+                q: "While exiting the water, it's a good habit to keep your ________ as you climb the boat's ladder.",
+                options: ["mask around your neck", "snorkel in your mouth", "mask off and regulator clipped", "mask on and regulator in"],
+                answer: 3,
+                feedback: "Mask on, regulator in! 🌊 You're not safely out until you're fully out. A wave could hit you mid-ladder — you want to be able to breathe and see if you get pushed back into the water. Stay ready until you're aboard!"
+            },
+            {
+                q: "You're diving in a dry suit in low visibility and feel yourself starting to rise. Your leg catches on some fishing net that tangles around a fin. You should ________ first.",
+                options: ["release some air from your BCD and/or dry suit", "quickly unravel the fishing net", "signal your buddy", "get your cutting tool out"],
+                answer: 0,
+                feedback: "Vent gas first — stop the ascent! 🪤 An uncontrolled ascent is the biggest danger here. Dump air from your BCD and/or dry suit to become neutral or slightly negative, then calmly deal with the entanglement!"
+            },
+            {
+                q: "You're making a shore dive and entering through mild surf. You have all your equipment in place and are carrying your fins. When a wave approaches,",
+                options: ["face the wave, leaning into it.", "dive under the wave and out the other side.", "stand sideways, leaning into it.", "stand with your back to the wave."],
+                answer: 2,
+                feedback: "Stand sideways and lean in! 🏖️ Facing the wave gives it your full body profile to push against. Sideways presents the smallest target and gives you stability. Lean into it so you don't get knocked backward!"
+            },
+            {
+                q: "You're diving close to shore but in very low visibility and you're no longer sure where you are or which way is back to shore. ________ could immediately help you.",
+                options: ["Kick cycles and bottom composition", "Sand ripples and depth change", "Boat noise and time estimation", "Currents and tides"],
+                answer: 1,
+                feedback: "Sand ripples and depth change! 🏖️ Sand ripples run parallel to the shoreline — follow them and you'll stay on course. Depth also shallows as you approach the beach. These natural navigation clues are always there!"
+            },
+            {
+                q: "You should administer oxygen to a diver you suspect is suffering from decompression illness:",
+                options: ["only if a medical doctor is present.", "only if the diver has not been diving with enriched air.", "only if you are in a completely dry area.", "as soon as possible."],
+                answer: 3,
+                feedback: "As soon as possible — no waiting! ⏱️ Pure oxygen helps wash out nitrogen from bubbles and improves oxygen delivery to damaged tissues. Don't wait for a doctor or perfect conditions. Every minute counts!"
+            },
+            {
+                q: "The correct procedure for performing an emergency weight drop at the surface is to",
+                options: ["use your left hand to pull the weight belt free.", "pull the weights free and place them in the surface buoy.", "quick-release the weights and pull them clear of your body.", "completely deflate your BCD and pull the weights free."],
+                answer: 2,
+                feedback: "Quick-release and clear! 🏊 Use the quick-release mechanism and immediately pull the weights clear of your body — otherwise they could tangle or drag you down. Then inflate your BCD for positive buoyancy!"
+            },
+            {
+                q: "You are lower on gas than you would like but not yet at ascent pressure. The surface is choppy. You should",
+                options: ["swim faster to your exit point, ascending to a shallower depth if possible.", "ascend immediately and steadily to the surface, and continue to the exit point at the surface.", "continue swimming as you were because you have already planned a reserve into your ascent pressure.", "slow down and set a pace that slows your breathing, if possible ascending to a shallower depth."],
+                answer: 3,
+                feedback: "Slow down and breathe less! 😤 Swimming faster burns more gas — exactly what you can't afford. Slow your pace, breathe slowly and deeply, and ascend slightly shallower if possible to reduce gas consumption. Stay calm!"
+            },
+            {
+                q: "When you exit the water after a dive in warm tropical sea water, you notice your buddy has a red, raised welt on her arm. This is most likely caused by a ________ and you should ________.",
+                options: ["fish spine; apply ice cubes to the wound", "jellyfish; rinse the wound area with vinegar", "fire coral; immobilize the arm and apply pressure to the wound", "sea snake; rinse the wound with cold salt water"],
+                answer: 1,
+                feedback: "Jellyfish sting! 🪼 Rinse with vinegar to neutralize the nematocysts (stinging cells). Don't use fresh water — it triggers unfired cells to release more venom. Don't rub either — same problem. Vinegar is your friend!"
+            },
+            {
+                q: "If you are searching for something lost underwater in a small area using only a compass, the best search method will be",
+                options: ["random search pattern.", "expanding square search pattern.", "line-based search pattern.", "circular search pattern."],
+                answer: 1,
+                feedback: "Expanding square pattern! 🧭 Perfect for small, confined areas with a compass — systematic, thorough, and you won't miss spots. Start small and spiral outward in a square pattern. Great for finding dropped items!"
+            },
+            {
+                q: "Hyperventilation (rapid, deep breathing) is no longer preferred as a breathhold technique in skin diving because it can result in ________. It is better to ________ in preparation for a skin dive.",
+                options: ["nitrogen narcosis; breathe deeply and slowly", "shallow-water blackout; skip-breathe", "loss of consciousness; breathe from your diaphragm, or \"stomach breathe\"", "drowning; shallow-breathe rapidly"],
+                answer: 3,
+                feedback: "Hyperventilation can lead to drowning! 💨 It washes out CO₂ (the urge-to-breathe signal) so you may blackout underwater before feeling the need to surface. Limit to 2-3 breaths max, and breathe slowly and shallowly for skin diving!"
+            },
+            {
+                q: "At the scene of an accident, drowning victims who appear to feel better and have recovered from the incident should always be encouraged to see a medical doctor because",
+                options: ["they may develop decompression illness.", "they may have aspirated water that can cause lung malfunction.", "they may have water narcosis.", "the water may have caused an ear barotrauma."],
+                answer: 1,
+                feedback: "Secondary drowning is a real risk! 🏥 Aspirated water — even small amounts — can cause delayed pulmonary oedema hours after the incident. Victims who 'feel fine' can deteriorate rapidly. A medical check is essential, always!"
+            },
+            {
+                q: "Participating in a PADI ReActivate program is recommended when",
+                options: ["an individual wants to try diving for the first time.", "a diver wants to refresh his skills after a period of inactivity.", "an individual wants to snorkel but has no interest in scuba.", "a diver just wants to replace a lost certification card."],
+                answer: 1,
+                feedback: "Skills refresh after a break! 🔄 PADI ReActivate is the perfect tune-up for certified divers who haven't been in the water for a while. Knowledge review + confined water skills = confidence restored. Don't skip it!"
+            },
+            {
+                q: "What is the compression-to-ventilation ratio for administering one-person CPR on an adult casualty?",
+                options: ["30:2", "15:1", "15:2", "30:1"],
+                answer: 0,
+                feedback: "30 compressions : 2 breaths! ❤️ Current CPR guidelines for one-rescuer adult CPR. Push hard, push fast (100-120/min), and let the chest fully recoil between compressions. Lock this ratio in your memory!"
+            },
+            {
+                q: "You're on a special dive to photograph manta rays and have reached your safety stop. The rays start to move deeper and away from you. You check your gas and are very close to ascent pressure. Your buddy has more air remaining than you. You should",
+                options: ["take your few last shots where you are and make your ascent as planned.", "quickly swim toward the rays and take the shot since you estimate you can make it back in good time.", "slowly swim toward the rays to take the shot as your buddy has plenty of air remaining.", "give the camera to your buddy and signal that he should go on alone to take the photos while you wait."],
+                answer: 0,
+                feedback: "Stick to your plan! 📸 You're at safety stop depth and very close to ascent pressure. The mantas will be back — your life won't reset if you push your limits. Great shots aren't worth a bad ascent. Make the planned ascent!"
+            },
+            {
+                q: "You retain your regulator in place during a Controlled Emergency Swimming Ascent (CESA) when you have run out of air because",
+                options: ["it helps you make a continuous sound.", "you may be able to get a few breaths of air as you ascend.", "it will stop the urge to breathe.", "it can help control your ascent rate."],
+                answer: 1,
+                feedback: "You might get a few breaths! 🌬️ As you ascend and pressure decreases, residual gas in the cylinder expands — you may be able to take small breaths. Also, keeping the regulator in prevents water inhalation and reminds you to exhale continuously!"
+            }
+        ],
+
+        RDP: [
+            {
+                q: "When planning a dive using the RDP, bottom time is defined as the time from",
+                options: ["the beginning of descent until surfacing at the end of the dive.", "the beginning of descent to the beginning of ascent to the surface.", "your arrival at the deepest depth of your dive until the moment you start your safety stop.", "your arrival on the bottom until the beginning of the safety stop."],
+                answer: 1,
+                feedback: "Descent to start of final ascent! ⏱️ Bottom time on the RDP = start of descent to the moment you begin your final ascent. This does NOT include your ascent or safety stop time. Know your definitions!"
+            },
+            {
+                q: "You've made a single dive at an altitude of 450 metres/1,500 feet. What is the minimum time you are recommended to wait before flying?",
+                options: ["12 hours", "18 hours", "24 hours", "Four hours"],
+                answer: 0,
+                feedback: "12 hours for a single dive! ✈️ The PADI guideline: single no-decompression dive = minimum 12 hours before flying. Multiple dives or multi-day diving = minimum 18 hours. When in doubt, wait longer!"
+            },
+            {
+                q: "The US Navy tables use a ________ compartment to control the off-gassing during the surface interval, whereas the Recreational Dive Planner (RDP) uses a ________ compartment to calculate nitrogen elimination during the interval.",
+                options: ["40-minute; 90-minute", "90-minute; 40-minute", "60-minute; 120-minute", "120-minute; 60-minute"],
+                answer: 3,
+                feedback: "120-minute (Navy) vs 60-minute (RDP)! 📊 The RDP uses a 60-minute compartment for surface interval calculations — making it more conservative than US Navy tables. Different tables, different assumptions — always use the right one!"
+            },
+            {
+                q: "A buddy team plans a dive to 30 metres/100 feet for 20 minutes. They get distracted and then notice they have a bottom time of 26 minutes. They should",
+                options: ["immediately ascend to the surface, breathe 100% oxygen and avoid diving for 48 hours.", "immediately ascend to 5 metres/15 feet and make a stop for three minutes, then avoid diving for 12 hours.", "immediately ascend to 5 metres/15 feet and make a stop for eight minutes, then avoid diving for six hours.", "immediately ascend to 5 metres/15 feet and make a stop for at least 15 minutes (air supply permitting), then avoid diving for 24 hours."],
+                answer: 3,
+                feedback: "Extended decompression stop required! 🛑 At 30m, NDL is ~20 minutes. They've exceeded it by 6 minutes. Ascend to 5m/15ft, stop for at least 15 minutes, then no more diving for 24 hours. Never rush the ascent!"
+            },
+            {
+                q: "You and a buddy drive to an altitude of 500 metres/1650 feet for a dive in a clear, freshwater mountain lake. You need to use special procedures when planning the dive using the RDP or computer. This is because",
+                options: ["the atmospheric pressure at altitude is lower than that at sea level.", "dives at altitude of 150 metres/500 feet or higher are considered altitude dives and need special procedures.", "you should plan the dive as if it is 4 metres/10 feet deeper at this altitude.", "the atmospheric pressure at altitude is higher than at sea level."],
+                answer: 0,
+                feedback: "Lower atmospheric pressure at altitude! 🏔️ Less surface pressure means nitrogen off-gasses more slowly and your body acts as if you dove deeper than actual depth. Always use altitude dive procedures above 300m/1000ft!"
+            },
+            {
+                q: "Dive tables and computers track the theoretical amount of ________ dissolved in body tissues during and between dives.",
+                options: ["oxygen", "nitrogen", "carbon dioxide", "argon"],
+                answer: 1,
+                feedback: "Nitrogen — the culprit! 📈 Nitrogen is the inert gas that builds up in your tissues under pressure and must off-gas safely during ascent. Too much too fast = DCS. Tables and computers track this theoretical saturation!"
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — If a diver exits the water in pressure group K, what would her new pressure group be after a surface interval of 17 minutes?",
+                options: ["J", "G", "H", "I"],
+                answer: 2,
+                feedback: "Pressure group H after 17 minutes! 📋 Look up Group K on the surface interval table, find 17 minutes — you land on Group H. Only a small off-gas in that short time. Always use your RDP table to verify!"
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — If a diver exits the water in pressure group C, what would the diver's new pressure group be after a surface interval of 4 hours 30 minutes?",
+                options: ["The diver would have no PG.", "A", "C", "Z"],
+                answer: 0,
+                feedback: "No pressure group! 🎉 After 4 hours 30 minutes from Group C, the diver has fully off-gassed — no residual nitrogen group. Clean slate for the next dive! Long surface intervals are a wonderful thing."
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — Two divers complete a 21-metre/70-foot dive for 30 minutes. After an hour's surface interval, they want to make another dive. What is the maximum allowable depth they can go to if they want to stay for 50 minutes? (Metric / Imperial)",
+                options: ["15 metres / 55 feet", "16 metres / 50 feet", "17 metres / 60 feet", "18 metres / 65 feet"],
+                answer: 1,
+                feedback: "16 metres / 50 feet! 📋 Work through your RDP: find the pressure group after the first dive, apply the surface interval, then find the depth that allows 50 minutes of adjusted no-decompression time. Practice this table work!"
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — What is the minimum surface interval required to make a dive to 22 metres/80 feet for 23 minutes, followed by a 16-metre/50-foot dive for 47 minutes? (Metric / Imperial)",
+                options: ["12 minutes / 11 minutes", "23 minutes / 15 minutes", "29 minutes / 19 minutes", "53 minutes / 33 minutes"],
+                answer: 1,
+                feedback: "23 minutes (metric) / 15 minutes (imperial)! ⏰ Work backwards from the second dive requirements to find the pressure group you need, then find the surface interval from the first dive's exit group. Table skills matter!"
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — Two divers complete a dive to 30 metres/100 feet for 20 minutes. After a surface interval of one hour they want to make a 22-metre/70-foot dive to the same wreck. How long could they stay on the second dive? (Metric / Imperial)",
+                options: ["8 minutes / 9 minutes", "24 minutes / 25 minutes", "29 minutes / 30 minutes", "1 hour / 1 hour"],
+                answer: 1,
+                feedback: "24 minutes (metric) / 25 minutes (imperial)! ⏱️ That first deep dive loads you up with nitrogen. After one hour surface interval, your adjusted no-decompression limit for the second dive is significantly reduced. Plan carefully!"
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — A diver completes a 25-minute dive to 22 metres/72 feet, and after waiting one hour makes a second dive to 18 metres/60 feet for 36 minutes. What is the diver's pressure group after the second dive? (Metric / Imperial)",
+                options: ["N / O", "S / P", "T / U", "W / W"],
+                answer: 2,
+                feedback: "T (metric) / U (imperial)! 📊 Two dives with only an hour surface interval loads nitrogen significantly. Work through your RDP step by step: exit group → surface interval group → adjusted NDL → final pressure group!"
+            },
+            {
+                q: "Use the RDP Table or eRDPml. — A diver is in pressure group H at the start of his next dive. What would the diver's pressure group be after this dive if he went to 18 metres/66 feet for 20 minutes? (Metric / Imperial)",
+                options: ["W / I", "T / R", "S / S", "R / T"],
+                answer: 3,
+                feedback: "R (metric) / T (imperial)! 📋 Starting in group H means residual nitrogen already on board. Use the repetitive dive table to find the final pressure group for 18m/66ft with 20 minutes bottom time from Group H!"
+            },
+            {
+                q: "Use the eRDPml. — If a diver surfaces from a dive with a pressure group of W, what is his pressure group after 40 minutes on the surface?",
+                options: ["I", "K", "L", "M"],
+                answer: 3,
+                feedback: "Pressure group M after 40 minutes! 💨 Starting from the heaviest group W, only 40 minutes of off-gassing brings you to M. You've shed some nitrogen but still carry significant residual. Long surface intervals are your friend!"
+            },
+            {
+                q: "Use the eRDPml. — What is the no decompression limit for a dive to 28 metres/95 feet? (Metric / Imperial)",
+                options: ["20 minutes / 20 minutes", "25 minutes / 25 minutes", "24 minutes / 23 minutes", "23 minutes / 22 minutes"],
+                answer: 3,
+                feedback: "23 minutes (metric) / 22 minutes (imperial)! ⏱️ At 28m/95ft the NDL is tight — deep diving eats up your no-deco time fast. Always look up your NDL before the dive and set a conservative turn time!"
+            },
+            {
+                q: "Use the eRDPml. — A diver completes a 26-minute dive to 26 metres/81 feet, and after 70 minutes on the surface makes a second dive to 18 metres/60 feet for 25 minutes. What is the diver's pressure group after the second dive? (Metric / Imperial)",
+                options: ["W / W", "P / Q", "M / N", "N / O"],
+                answer: 1,
+                feedback: "P (metric) / Q (imperial)! 📊 A deep first dive followed by a shorter, shallower second dive after 70 minutes surface interval. Work through the eRDPml carefully — each step builds on the previous!"
+            },
+            {
+                q: "Use the eRDPml. — What is the minimum surface interval required to make a dive to 28 metres/95 feet for 21 minutes, followed by a 20-metre/70-foot dive for 30 minutes? (Metric / Imperial)",
+                options: ["2:15 / 2:24", "1 hour / 1:35", "1:04 / 1:38", "1:08 / 2:23"],
+                answer: 1,
+                feedback: "1 hour (metric) / 1:35 (imperial)! ☀️ Two dives at 28m and 20m back to back need a substantial surface interval. Work backwards from the required adjusted no-deco time for the second dive to find your minimum break!"
+            },
+            {
+                q: "Use the eRDPml. — A buddy team is planning a multilevel dive with three levels: Metric: 31, 20 and 12 metres / Imperial: 108, 70 and 40 feet. If the divers plan to stay the maximum time allowed at each depth, approximately how long will the divers spend underwater? (Ignore ascent times, but not required safety stop time.)",
+                options: ["71 minutes", "74 minutes", "77 minutes", "80 minutes"],
+                answer: 3,
+                feedback: "Approximately 80 minutes! 🏊 Multilevel diving with the eRDPml maximizes your bottom time by tracking each level separately. Use the multilevel mode, plan maximum time at each depth, and enjoy a longer dive safely!"
+            },
+            {
+                q: "Use the eRDPml. — What is a diver's pressure group after a dive to 31 metres/108 feet for 16 minutes? (Metric / Imperial)",
+                options: ["J / K", "K / L", "L / M", "The time exceeds the NDL."],
+                answer: 2,
+                feedback: "L (metric) / M (imperial)! 📋 At 31m/108ft for 16 minutes — within the NDL but loading up nitrogen significantly. Look up your exit pressure group on the eRDPml — and plan your surface interval for the next dive accordingly!"
+            },
+            {
+                q: "Use the eRDPml. — A buddy team has completed a multilevel dive: Metric 35, 24 and 15 metres / Imperial 115, 80 and 50 feet. They spent 10 minutes at the first level, 10 minutes at the second, and 15 minutes at the third. What pressure group did they exit the dive with? (Metric / Imperial)",
+                options: ["S / R", "T / S", "U / T", "V / U"],
+                answer: 1,
+                feedback: "T (metric) / S (imperial)! 🎯 A proper multilevel dive tracked through the eRDPml. Starting deep at 35m/115ft and working up — each level is calculated using the multilevel planner. Great multilevel diving maximizes time and manages nitrogen!"
+            }
+        ]
+    };
+
+    // ── Section labels ─────────────────────────────────────────────────────────
+    var sectionLabels = {
+        Physics:    'Physics',
+        Physiology: 'Physiology',
+        Equipment:  'Equipment',
+        DSE:        'Diving Skills & Environment',
+        RDP:        'Recreational Dive Planner (RDP)'
+    };
+
+    // ── App State ──────────────────────────────────────────────────────────────
+    var currentExam = 'Physics';
+    var currentQuestionIndex = 0;
+    var score = 0;
+    var selectedOption = null;
+    var isAnswered = false;
+    var answeredQuestions = new Set();
+
+    // ── Bubbles ────────────────────────────────────────────────────────────────
+    function createBubbles() {
+        var container = document.getElementById('bubble-container');
+        for (var i = 0; i < 20; i++) {
+            var bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            var size = (Math.random() * 60 + 20) + 'px';
+            bubble.style.width = size;
+            bubble.style.height = size;
+            bubble.style.left = (Math.random() * 100) + 'vw';
+            bubble.style.animationDelay = (Math.random() * 5) + 's';
+            bubble.style.setProperty('--duration', (Math.random() * 10 + 10) + 's');
+            container.appendChild(bubble);
+        }
+    }
+
+    // ── Navigation ─────────────────────────────────────────────────────────────
+    function startExam(type) {
+        currentExam = type;
+        currentQuestionIndex = 0;
+        score = 0;
+        answeredQuestions = new Set();
+        showScreen('quiz-screen');
+        document.getElementById('section-badge').innerText = sectionLabels[type] || type;
+        loadQuestion();
+    }
+
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+        document.getElementById(screenId).classList.add('active');
+    }
+
+    function loadQuestion() {
+        isAnswered = false;
+        selectedOption = null;
+        var quiz = questions[currentExam];
+        var qData = quiz[currentQuestionIndex];
+
+        document.getElementById('question-counter').innerText = 'Question ' + (currentQuestionIndex + 1) + '/' + quiz.length;
+        document.getElementById('current-score').innerText = 'Score: ' + score;
+        document.getElementById('progress-bar').style.width = ((answeredQuestions.size / quiz.length) * 100) + '%';
+        document.getElementById('question-text').innerText = qData.q;
+
+        var optionsContainer = document.getElementById('options-container');
+        optionsContainer.innerHTML = '';
+        qData.options.forEach(function(opt, index) {
+            var optEl = document.createElement('div');
+            optEl.className = 'option';
+            optEl.innerHTML = '<span class="option-letter">' + String.fromCharCode(97 + index) + '</span><span class="option-text">' + opt + '</span>';
+            optEl.onclick = (function(i, el){ return function(){ selectOption(i, el); }; })(index, optEl);
+            optionsContainer.appendChild(optEl);
+        });
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('submit-btn').style.display = 'block';
+        document.getElementById('next-btn').style.display = 'none';
+
+        // Prev button
+        document.getElementById('prev-btn').style.opacity = currentQuestionIndex === 0 ? '0.3' : '1';
+        document.getElementById('prev-btn').style.pointerEvents = currentQuestionIndex === 0 ? 'none' : 'auto';
+
+        // Skip always active — at last question opens modal or results
+        document.getElementById('skip-btn').style.opacity = '1';
+        document.getElementById('skip-btn').style.pointerEvents = 'auto';
+
+        // If already answered, show Next instead of Submit
+        if (answeredQuestions.has(currentQuestionIndex)) {
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'block';
+        }
+    }
+
+    function selectOption(index, element) {
+        if (isAnswered) return;
+        selectedOption = index;
+        document.querySelectorAll('.option').forEach(function(opt){ opt.classList.remove('selected'); });
+        element.classList.add('selected');
+    }
+
+    function submitAnswer() {
+        if (selectedOption === null) {
+            alert('Please select an answer first! 🧘‍♂️');
+            return;
+        }
+        isAnswered = true;
+        answeredQuestions.add(currentQuestionIndex);
+        var qData = questions[currentExam][currentQuestionIndex];
+        var feedbackEl = document.getElementById('feedback');
+
+        if (qData.answer === null) {
+            feedbackEl.className = 'feedback';
+            feedbackEl.style.background = 'rgba(72,202,228,0.15)';
+            feedbackEl.style.border = '1px solid #48cae4';
+            feedbackEl.style.color = '#e0f7ff';
+            document.getElementById('feedback-title').innerText = 'Answer Pending ⏳';
+            document.getElementById('feedback-text').innerText = qData.feedback;
+            document.getElementById('correct-answer-reveal').innerText = '';
+        } else {
+            var isCorrect = (selectedOption === qData.answer);
+            if (isCorrect) {
+                score++;
+                feedbackEl.className = 'feedback correct';
+                document.getElementById('feedback-title').innerText = 'Nice Dive! 🤿';
+            } else {
+                feedbackEl.className = 'feedback wrong';
+                document.getElementById('feedback-title').innerText = 'Watch Your Depth! ⚠️';
+            }
+            document.getElementById('feedback-text').innerText = qData.feedback;
+            document.getElementById('correct-answer-reveal').innerText = isCorrect ? '' : 'Correct Answer: ' + qData.options[qData.answer];
+        }
+
+        feedbackEl.style.display = 'block';
+        document.getElementById('submit-btn').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'block';
+
+        // Update progress bar
+        document.getElementById('progress-bar').style.width =
+            ((answeredQuestions.size / questions[currentExam].length) * 100) + '%';
+    }
+
+    function prevQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    }
+
+    function skipQuestion() {
+        var quiz = questions[currentExam];
+        if (currentQuestionIndex < quiz.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            // At the last question — check completion
+            var unanswered = getUnansweredList();
+            if (unanswered.length === 0) {
+                showResults();
+            } else {
+                showUnansweredModal(unanswered);
+            }
+        }
+    }
+
+    function nextQuestion() {
+        // After answering, jump to next unanswered or results
+        var next = findNextUnanswered();
+        if (next !== -1) {
+            currentQuestionIndex = next;
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function getUnansweredList() {
+        var quiz = questions[currentExam];
+        var list = [];
+        for (var i = 0; i < quiz.length; i++) {
+            if (!answeredQuestions.has(i)) list.push(i);
+        }
+        return list;
+    }
+
+    function findNextUnanswered() {
+        var quiz = questions[currentExam];
+        for (var i = currentQuestionIndex + 1; i < quiz.length; i++) {
+            if (!answeredQuestions.has(i)) return i;
+        }
+        for (var i = 0; i < currentQuestionIndex; i++) {
+            if (!answeredQuestions.has(i)) return i;
+        }
+        return -1;
+    }
+
+    function showUnansweredModal(unanswered) {
+        var modal = document.getElementById('unanswered-modal');
+        var grid = document.getElementById('unanswered-grid');
+        var msg = document.getElementById('unanswered-msg');
+        var count = unanswered.length;
+        msg.innerText = count + ' question' + (count > 1 ? 's' : '') + ' still need' + (count === 1 ? 's' : '') + ' your answer. Tap a number to go there.';
+        grid.innerHTML = '';
+        unanswered.forEach(function(idx) {
+            var btn = document.createElement('button');
+            btn.className = 'unanswered-btn';
+            btn.innerText = idx + 1;
+            btn.onclick = (function(i) { return function() {
+                closeUnansweredModal();
+                currentQuestionIndex = i;
+                loadQuestion();
+            }; })(idx);
+            grid.appendChild(btn);
+        });
+        modal.classList.add('active');
+    }
+
+    function closeUnansweredModal() {
+        document.getElementById('unanswered-modal').classList.remove('active');
+    }
+
+    function showResults() {
+        showScreen('result-screen');
+        var quiz = questions[currentExam];
+        document.getElementById('final-score').innerText = score + '/' + quiz.length;
+        var percentage = (score / quiz.length) * 100;
+        var commentEl = document.getElementById('score-comment');
+        if (percentage >= 90) {
+            commentEl.innerText = "Instructor-level! You nailed it. 🦈";
+        } else if (percentage >= 75) {
+            commentEl.innerText = "Great dive! A few more reps and you'll be perfect. 🐠";
+        } else {
+            commentEl.innerText = "Keep diving in. Every expert was once a beginner. 🐚";
+        }
+    }
+
+    function resetApp() {
+        showScreen('home-screen');
+    }
+    </script>
+</body>
+</html>

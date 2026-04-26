@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import PyPDF2; reader = PyPDF2.PdfReader\\('IDC.pdf'\\); print\\(f'Pages: {len\\(reader.pages\\)}'\\); [print\\(f'--- Page {i+1} ---'\\); print\\(reader.pages[i].extract_text\\(\\)\\) for i in range\\(min\\(10, len\\(reader.pages\\)\\)\\)]\")",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\('IDC.pdf'\\); print\\(f'Pages: {len\\(pdf.pages\\)}'\\); [print\\(f'--- Page {i+1} ---\\\\n', pdf.pages[i].extract_text\\(\\)\\) for i in range\\(min\\(10, len\\(pdf.pages\\)\\)\\)]\")",
+      "Bash(python -c \"import PyPDF2; reader = PyPDF2.PdfReader\\('IDC.pdf'\\); print\\(f'Pages: {len\\(reader.pages\\)}'\\); [print\\(f'--- Page {i+1} ---'\\); print\\(reader.pages[i].extract_text\\(\\)\\) for i in range\\(min\\(15, len\\(reader.pages\\)\\)\\)]\")",
+      "Bash(python3)",
+      "Bash(python3 -m pip install PyPDF2 --quiet)",
+      "Bash(python3 -c ':*)",
+      "Bash(pip install:*)",
+      "Bash(python3 -m pip install pymupdf)",
+      "Bash('C:\\\\Users\\\\Raja Sharina\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe' -c ':*)",
+      "Bash(rm:*)"
+    ]
+  }
+}

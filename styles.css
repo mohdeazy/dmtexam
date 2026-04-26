@@ -83,6 +83,7 @@ h1 {
     margin-bottom: 0.5rem;
     background: linear-gradient(to right, #48cae4, #00b4d8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
 }
@@ -281,6 +282,147 @@ p.subtitle {
     color: var(--teal);
 }
 
+/* Unanswered Questions Modal */
+.unanswered-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 4, 94, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.unanswered-overlay.active {
+    display: flex;
+}
+
+.unanswered-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    animation: fadeIn 0.25s ease;
+}
+
+.unanswered-box h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+    color: #ffa040;
+}
+
+.unanswered-box p {
+    font-size: 0.88rem;
+    opacity: 0.75;
+    margin-bottom: 1.4rem;
+}
+
+.unanswered-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.unanswered-btn {
+    background: rgba(231, 76, 60, 0.2);
+    border: 1.5px solid #e74c3c;
+    color: #fff;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.unanswered-btn:hover {
+    background: rgba(231, 76, 60, 0.5);
+    transform: scale(1.12);
+}
+
+/* Quiz Navigation Row */
+.quiz-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.nav-arrow {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.nav-arrow:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(0, 180, 216, 0.35); }
+.nav-arrow:active { transform: scale(0.92); }
+
+.nav-home {
+    background: rgba(255, 255, 255, 0.13);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.nav-home:hover { background: rgba(255, 255, 255, 0.22); transform: scale(1.08); }
+.nav-home:active { transform: scale(0.92); }
+
+.quiz-nav .button {
+    flex: 1;
+    max-width: 220px;
+    min-width: 0;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Mobile Optimization: One-Page Feel */
 @media (max-width: 600px) {
     #app-container {
@@ -374,4 +516,8 @@ p.subtitle {
         font-size: 2.2rem;
         margin: 0.4rem 0;
     }
+
+    .quiz-nav { gap: 0.35rem; }
+    .nav-arrow, .nav-home { width: 36px; height: 36px; font-size: 0.85rem; border-radius: 8px; }
+    .quiz-nav .button { font-size: 0.8rem !important; padding: 0.5rem 0.6rem !important; height: 36px; }
 }

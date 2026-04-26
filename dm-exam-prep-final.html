@@ -27,6 +27,7 @@
                 <button class="button" onclick="startExam('Physics')">Physics Theory</button>
                 <button class="button" onclick="startExam('Physiology')">Physiology Theory</button>
                 <button class="button" onclick="startExam('RDP')">RDP Theory</button>
+                <a href="idc-exam.html" class="button" style="text-decoration:none;">🔐 IDC Dive Theory</a>
             </div>
             <div class="footer-credits">
                 <p>Made by Mohd Eazy @ <a href="https://scubamalaysia.com" target="_blank">Scuba Malaysia</a></p>
@@ -57,9 +58,12 @@
                 </div>
             </div>
 
-            <div class="btn-group">
-                <button class="button" id="submit-btn" onclick="submitAnswer()">Submit Answer</button>
-                <button class="button" id="next-btn" style="display: none;" onclick="nextQuestion()">Next Question ➔</button>
+            <div class="quiz-nav">
+                <button class="nav-arrow" id="prev-btn" onclick="prevQuestion()" title="Previous">◀</button>
+                <button class="button" id="submit-btn" onclick="submitAnswer()">Submit</button>
+                <button class="button" id="next-btn" style="display:none;" onclick="nextQuestion()">Next ➔</button>
+                <button class="nav-arrow" id="skip-btn" onclick="skipQuestion()" title="Skip">▶</button>
+                <button class="nav-home" onclick="resetApp()" title="Home">🏠</button>
             </div>
         </section>
 
@@ -74,6 +78,16 @@
             </div>
         </section>
     </main>
+
+    <!-- Unanswered Modal -->
+    <div id="unanswered-modal" class="unanswered-overlay">
+        <div class="unanswered-box">
+            <h3>⚠️ Not Done Yet!</h3>
+            <p id="unanswered-msg">Some questions still need your answer. Tap a number to go there.</p>
+            <div class="unanswered-grid" id="unanswered-grid"></div>
+            <button class="button" onclick="closeUnansweredModal()" style="font-size:0.85rem;padding:0.6rem 1.8rem;">Back to Quiz</button>
+        </div>
+    </div>
 
     <script src="questions.js"></script>
     <script src="app.js"></script>
