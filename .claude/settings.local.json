@@ -10,7 +10,8 @@
       "Bash(pip install:*)",
       "Bash(python3 -m pip install pymupdf)",
       "Bash('C:\\\\Users\\\\Raja Sharina\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe' -c ':*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(python:*)"
     ]
   }
 }
